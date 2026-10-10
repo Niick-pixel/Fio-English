@@ -1,0 +1,330 @@
+{
+  "_info": "Banco de Error Killer. Cada error tiene su regla y sus ejercicios. Tipos: 'mc' (opción múltiple: 'options' + 'answer') y 'fill' (completar: 'answers' = lista de respuestas aceptadas). Los 'id' de ejercicios deben ser únicos.",
+  "errors": [
+    {
+      "id": "for-ago",
+      "title": "for + ago",
+      "wrong": "for three years ago",
+      "right": "for three years",
+      "rule": "«for» y «ago» nunca van juntos.",
+      "explanation": "«for» + duración = cuánto tiempo duró algo (for three years). «ago» = cuánto tiempo atrás pasó algo, con pasado simple (I joined three years ago). «since» + punto de inicio (since 2022).",
+      "examples": [
+        { "wrong": "I worked at Concentrix for three years ago.", "right": "I worked at Concentrix for three years." },
+        { "wrong": "I started for two years ago.", "right": "I started two years ago." }
+      ],
+      "exercises": [
+        { "id": "for-ago-01", "type": "mc", "prompt": "I worked at Concentrix ___ three years.", "options": ["for", "ago", "for ... ago", "since"], "answer": "for" },
+        { "id": "for-ago-02", "type": "mc", "prompt": "I started at Concentrix three years ___.", "options": ["ago", "for", "since", "during"], "answer": "ago" },
+        { "id": "for-ago-03", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I joined Veinsa Motors six months ago.", "I joined Veinsa Motors for six months ago.", "I joined Veinsa Motors since six months.", "I joined Veinsa Motors six months before ago."], "answer": "I joined Veinsa Motors six months ago." },
+        { "id": "for-ago-04", "type": "fill", "prompt": "I did my internship at Veinsa Motors ___ six months.", "hint": "for / ago", "answers": ["for"] },
+        { "id": "for-ago-05", "type": "fill", "prompt": "I finished my degree in International Trade two years ___.", "hint": "for / ago", "answers": ["ago"] },
+        { "id": "for-ago-06", "type": "mc", "prompt": "I handled loan accounts ___ about a year before moving to healthcare.", "options": ["for", "ago", "since", "for ... ago"], "answer": "for" },
+        { "id": "for-ago-07", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I've been working in customer service for three years.", "I've been working in customer service for three years ago.", "I've been working in customer service since three years.", "I'm working in customer service for three years ago."], "answer": "I've been working in customer service for three years." },
+        { "id": "for-ago-08", "type": "fill", "prompt": "We placed that purchase order with our supplier in Japan two weeks ___.", "hint": "for / ago", "answers": ["ago"] },
+        { "id": "for-ago-09", "type": "fill", "prompt": "The shipment was held at customs ___ five days.", "hint": "for / ago", "answers": ["for"] },
+        { "id": "for-ago-10", "type": "mc", "prompt": "I used Salesforce every day ___ three years.", "options": ["for", "ago", "since", "for ago"], "answer": "for" },
+        { "id": "for-ago-11", "type": "mc", "prompt": "Our German supplier confirmed the order a week ___.", "options": ["ago", "for", "since", "past"], "answer": "ago" },
+        { "id": "for-ago-12", "type": "mc", "prompt": "Interviewer: Tell me about your experience. — I worked in a call center ___.", "options": ["for three years", "for three years ago", "three years ago for", "since three years"], "answer": "for three years" },
+        { "id": "for-ago-13", "type": "fill", "prompt": "I've known how to use TICA ___ my internship.", "hint": "for / ago / since", "answers": ["since"] },
+        { "id": "for-ago-14", "type": "mc", "prompt": "When did you start on the banking account? — About eighteen months ___.", "options": ["ago", "for", "since", "before ago"], "answer": "ago" },
+        { "id": "for-ago-15", "type": "fill", "prompt": "I talked with US customers ___ eight hours a day.", "hint": "for / ago", "answers": ["for"] },
+        { "id": "for-ago-16", "type": "mc", "prompt": "I left Concentrix ___.", "options": ["two months ago", "for two months ago", "since two months ago", "ago two months"], "answer": "two months ago" }
+      ]
+    },
+    {
+      "id": "interested",
+      "title": "interest → interested",
+      "wrong": "I'm interest",
+      "right": "I'm interested",
+      "rule": "Para decir lo que te atrae: siempre «-ed» → I'm interested in…",
+      "explanation": "«interested» (con -ed) describe cómo te sentís vos. «interesting» (con -ing) describe la cosa: The role is interesting. «interest» sin terminación es sustantivo o verbo. Lo mismo con excited/exciting, tired/tiring, satisfied. Y la preposición es «in»: interested in.",
+      "examples": [
+        { "wrong": "I'm interest in this position.", "right": "I'm interested in this position." },
+        { "wrong": "I'm interesting in logistics.", "right": "I'm interested in logistics." }
+      ],
+      "exercises": [
+        { "id": "interested-01", "type": "mc", "prompt": "I'm very ___ in this position.", "options": ["interested", "interest", "interesting", "interests"], "answer": "interested" },
+        { "id": "interested-02", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I'm interested in logistics.", "I'm interest in logistics.", "I'm interesting in logistics.", "I'm interested on logistics."], "answer": "I'm interested in logistics." },
+        { "id": "interested-03", "type": "fill", "prompt": "I'm ___ in the executive assistant role at BCG.", "hint": "interest", "answers": ["interested"] },
+        { "id": "interested-04", "type": "mc", "prompt": "The work at a consulting firm is very ___ to me.", "options": ["interesting", "interested", "interest", "interests"], "answer": "interesting" },
+        { "id": "interested-05", "type": "fill", "prompt": "I've always been ___ in international trade.", "hint": "interest", "answers": ["interested"] },
+        { "id": "interested-06", "type": "mc", "prompt": "Why are you ___ in this position?", "options": ["interested", "interest", "interesting", "interests"], "answer": "interested" },
+        { "id": "interested-07", "type": "mc", "prompt": "I was really ___ when I closed my first import order.", "options": ["excited", "excite", "exciting", "excites"], "answer": "excited" },
+        { "id": "interested-08", "type": "fill", "prompt": "Customers were often ___ with the quick resolution.", "hint": "satisfy", "answers": ["satisfied"] },
+        { "id": "interested-09", "type": "mc", "prompt": "I'm ___ in learning more about supply chain management.", "options": ["interested", "interest", "interesting", "interests"], "answer": "interested" },
+        { "id": "interested-10", "type": "mc", "prompt": "That's an ___ question.", "options": ["interesting", "interested", "interest", "interests"], "answer": "interesting" },
+        { "id": "interested-11", "type": "fill", "prompt": "I'm particularly ___ in how your team handles customs compliance.", "hint": "interest", "answers": ["interested"] },
+        { "id": "interested-12", "type": "mc", "prompt": "I'm interested ___ this role.", "options": ["in", "on", "for", "about"], "answer": "in" },
+        { "id": "interested-13", "type": "fill", "prompt": "I'd be ___ to hear more about the team.", "hint": "interest", "answers": ["interested"] },
+        { "id": "interested-14", "type": "mc", "prompt": "After a ten-hour shift, I was really ___.", "options": ["tired", "tiring", "tire", "tires"], "answer": "tired" },
+        { "id": "interested-15", "type": "mc", "prompt": "I'm ___ about the opportunity to support senior executives.", "options": ["excited", "exciting", "excite", "excitement"], "answer": "excited" },
+        { "id": "interested-16", "type": "fill", "prompt": "Are you still ___ in the logistics position?", "hint": "interest", "answers": ["interested"] }
+      ]
+    },
+    {
+      "id": "listen-to",
+      "title": "listen to + needs",
+      "wrong": "listen all their necessity",
+      "right": "listen to their needs",
+      "rule": "«listen» siempre lleva «to» antes del objeto, y con clientes se habla de «needs», no «necessity».",
+      "explanation": "listen to someone / listen to something. «necessity» es algo indispensable en sentido abstracto o formal (a basic necessity). Para lo que un cliente o jefe necesita: needs → listen to their needs, meet their needs, understand their needs.",
+      "examples": [
+        { "wrong": "I listen all their necessity.", "right": "I listen to their needs." },
+        { "wrong": "I listened the customer.", "right": "I listened to the customer." }
+      ],
+      "exercises": [
+        { "id": "listen-to-01", "type": "mc", "prompt": "I always ___ the customer before offering a solution.", "options": ["listen to", "listen", "hear to", "listen at"], "answer": "listen to" },
+        { "id": "listen-to-02", "type": "mc", "prompt": "My first step was to listen to their ___.", "options": ["needs", "necessity", "necessities", "needings"], "answer": "needs" },
+        { "id": "listen-to-03", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I listened to their needs and offered options.", "I listened all their necessity and offered options.", "I listened their needs and offered options.", "I listened to all their necessity and offered options."], "answer": "I listened to their needs and offered options." },
+        { "id": "listen-to-04", "type": "fill", "prompt": "I made sure to listen ___ the customer's concerns.", "hint": "preposición", "answers": ["to"] },
+        { "id": "listen-to-05", "type": "fill", "prompt": "We tailored the payment plan to the customer's ___.", "hint": "necesidades", "answers": ["needs"] },
+        { "id": "listen-to-06", "type": "mc", "prompt": "On the healthcare account, I learned to ___ patients carefully.", "options": ["listen to", "listen", "hear to", "listen at"], "answer": "listen to" },
+        { "id": "listen-to-07", "type": "mc", "prompt": "Our goal was to meet the client's ___.", "options": ["needs", "necessity", "necessaries", "need of"], "answer": "needs" },
+        { "id": "listen-to-08", "type": "fill", "prompt": "Please listen ___ the voicemail from the supplier in Shanghai.", "hint": "preposición", "answers": ["to"] },
+        { "id": "listen-to-09", "type": "mc", "prompt": "I ___ what the caller said and then summarized it back.", "options": ["listened to", "listened", "heard to", "listened at"], "answer": "listened to" },
+        { "id": "listen-to-10", "type": "fill", "prompt": "As an assistant, I'd anticipate my manager's ___.", "hint": "necesidades", "answers": ["needs"] },
+        { "id": "listen-to-11", "type": "mc", "prompt": "She didn't ___ my explanation.", "options": ["listen to", "listen", "listen at", "hear to"], "answer": "listen to" },
+        { "id": "listen-to-12", "type": "mc", "prompt": "Understanding the client's ___ helped me find the right loan option.", "options": ["needs", "necessity", "necessities", "needing"], "answer": "needs" },
+        { "id": "listen-to-13", "type": "fill", "prompt": "I always listen ___ feedback from my team lead.", "hint": "preposición", "answers": ["to"] },
+        { "id": "listen-to-14", "type": "mc", "prompt": "I like to ___ podcasts in English on my way to work.", "options": ["listen to", "listen", "hear to", "listen at"], "answer": "listen to" },
+        { "id": "listen-to-15", "type": "fill", "prompt": "My job was to identify the customer's ___ and resolve them on the first call.", "hint": "necesidades", "answers": ["needs"] },
+        { "id": "listen-to-16", "type": "mc", "prompt": "Before the meeting, ___ the recording of the last call.", "options": ["listen to", "listen", "hear to", "listen of"], "answer": "listen to" }
+      ]
+    },
+    {
+      "id": "tense-slip",
+      "title": "No resbalar al presente (narrando en pasado)",
+      "wrong": "we take more time",
+      "right": "we started taking",
+      "rule": "Si empezaste la historia en pasado, se queda en pasado hasta el final.",
+      "explanation": "Revisá cada verbo de la historia: started, took, handled, was, called. El presente solo vuelve al final si hablás de algo que hacés HOY gracias a esa experiencia: «Now I always double-check…».",
+      "examples": [
+        { "wrong": "Last year the team was behind, so we take more time per call.", "right": "Last year the team was behind, so we started taking more time per call." },
+        { "wrong": "The shipment was late, so I call the broker.", "right": "The shipment was late, so I called the broker." }
+      ],
+      "exercises": [
+        { "id": "tense-slip-01", "type": "mc", "prompt": "Last year our team was short-staffed, so we ___ taking more calls per shift.", "options": ["started", "start", "are starting", "starts"], "answer": "started" },
+        { "id": "tense-slip-02", "type": "mc", "prompt": "When the shipment got stuck in customs, I ___ the broker immediately.", "options": ["called", "call", "am calling", "calls"], "answer": "called" },
+        { "id": "tense-slip-03", "type": "fill", "prompt": "The customer was upset, so I ___ and offered a solution.", "hint": "apologize", "answers": ["apologized", "apologised"] },
+        { "id": "tense-slip-04", "type": "mc", "prompt": "¿Cuál mantiene el pasado?", "options": ["The system was down, so I took notes by hand and updated Salesforce later.", "The system was down, so I take notes by hand and update Salesforce later.", "The system is down, so I took notes by hand and updated Salesforce later.", "The system was down, so I taking notes by hand and updated Salesforce later."], "answer": "The system was down, so I took notes by hand and updated Salesforce later." },
+        { "id": "tense-slip-05", "type": "fill", "prompt": "In 2023, the account ___ its process, and we started taking more time per call.", "hint": "change", "answers": ["changed"] },
+        { "id": "tense-slip-06", "type": "mc", "prompt": "When I joined the healthcare account, I ___ how to read insurance claims.", "options": ["learned", "learn", "am learning", "learns"], "answer": "learned" },
+        { "id": "tense-slip-07", "type": "fill", "prompt": "The supplier in Germany ___ the wrong invoice, so I requested a corrected one.", "hint": "send", "answers": ["sent"] },
+        { "id": "tense-slip-08", "type": "mc", "prompt": "The order arrived late because the vessel ___ delayed in Panama.", "options": ["was", "is", "has", "be"], "answer": "was" },
+        { "id": "tense-slip-09", "type": "fill", "prompt": "My manager asked me to train two new agents, and I ___ a short guide for them.", "hint": "create", "answers": ["created"] },
+        { "id": "tense-slip-10", "type": "mc", "prompt": "At first I was nervous, but after a few weeks I ___ more confident.", "options": ["felt", "feel", "am feeling", "feels"], "answer": "felt" },
+        { "id": "tense-slip-11", "type": "mc", "prompt": "The customer called three times. Each time, she ___ the same question.", "options": ["asked", "asks", "is asking", "ask"], "answer": "asked" },
+        { "id": "tense-slip-12", "type": "fill", "prompt": "Our team was missing its targets, so we ___ taking shorter breaks.", "hint": "start", "answers": ["started"] },
+        { "id": "tense-slip-13", "type": "mc", "prompt": "During my internship, I ___ the customs documents in TICA.", "options": ["prepared", "prepare", "am preparing", "prepares"], "answer": "prepared" },
+        { "id": "tense-slip-14", "type": "fill", "prompt": "When the client ___ the case, I stayed calm and reviewed the account.", "hint": "escalate", "answers": ["escalated"] },
+        { "id": "tense-slip-15", "type": "mc", "prompt": "The Japanese supplier ___ the shipping date twice, so I updated the schedule.", "options": ["changed", "changes", "is changing", "change"], "answer": "changed" },
+        { "id": "tense-slip-16", "type": "mc", "prompt": "We ___ more time on each call, and our satisfaction scores went up.", "options": ["started taking", "take", "are taking", "starts taking"], "answer": "started taking" }
+      ]
+    },
+    {
+      "id": "labor",
+      "title": "labor → worked",
+      "wrong": "we labor to improve",
+      "right": "we worked to improve",
+      "rule": "«labor» = trabajo físico pesado o el parto. Para esfuerzo profesional: worked / worked hard.",
+      "explanation": "«Laborar» en español no se traduce como «to labor». En inglés, «labor» suena a fábrica o campo (manual labor) o al parto (she went into labor). En la oficina: I worked on…, I worked hard to…, I made an effort to…",
+      "examples": [
+        { "wrong": "We labor to improve our response times.", "right": "We worked to improve our response times." },
+        { "wrong": "I labored at Veinsa Motors.", "right": "I worked at Veinsa Motors." }
+      ],
+      "exercises": [
+        { "id": "labor-01", "type": "mc", "prompt": "We ___ to improve our response times.", "options": ["worked", "labored", "labor", "laboring"], "answer": "worked" },
+        { "id": "labor-02", "type": "mc", "prompt": "¿Cuál suena profesional?", "options": ["I worked hard to reduce errors in the purchase orders.", "I labored to reduce errors in the purchase orders.", "I labor to reduce errors in the purchase orders.", "I was laboring to reduce errors in the purchase orders."], "answer": "I worked hard to reduce errors in the purchase orders." },
+        { "id": "labor-03", "type": "fill", "prompt": "I ___ closely with the customs broker.", "hint": "trabajé", "answers": ["worked"] },
+        { "id": "labor-04", "type": "mc", "prompt": "Where did you work before? — I ___ at Concentrix.", "options": ["worked", "labored", "labor", "laborated"], "answer": "worked" },
+        { "id": "labor-05", "type": "mc", "prompt": "Aquí «labor» SÍ es correcto: My sister went into ___ at 3 a.m.", "options": ["labor", "work", "job", "working"], "answer": "labor" },
+        { "id": "labor-06", "type": "fill", "prompt": "Our team ___ to improve first-call resolution.", "hint": "trabajó", "answers": ["worked"] },
+        { "id": "labor-07", "type": "mc", "prompt": "I ___ with suppliers in China, Japan and Germany.", "options": ["worked", "labored", "labored on", "laboured at"], "answer": "worked" },
+        { "id": "labor-08", "type": "mc", "prompt": "Aquí «labor» SÍ es correcto: The factory needed more manual ___.", "options": ["labor", "work hard", "worked", "working"], "answer": "labor" },
+        { "id": "labor-09", "type": "fill", "prompt": "I made an ___ to learn Oracle quickly.", "hint": "esfuerzo", "answers": ["effort"] },
+        { "id": "labor-10", "type": "mc", "prompt": "We ___ hard to meet the end-of-month deadline.", "options": ["worked", "labored", "labor", "laborate"], "answer": "worked" },
+        { "id": "labor-11", "type": "mc", "prompt": "I ___ at Veinsa Motors as an import intern.", "options": ["worked", "labored", "labor", "laborated"], "answer": "worked" },
+        { "id": "labor-12", "type": "fill", "prompt": "I ___ on reducing average handle time.", "hint": "trabajé", "answers": ["worked"] },
+        { "id": "labor-13", "type": "mc", "prompt": "Tell me about your work ethic.", "options": ["I work hard and I follow through.", "I labor hard and I follow through.", "I laborate hard and I follow through.", "I make labor and I follow through."], "answer": "I work hard and I follow through." },
+        { "id": "labor-14", "type": "mc", "prompt": "We ___ to streamline the import documentation.", "options": ["worked", "labored", "laborated", "made labor"], "answer": "worked" },
+        { "id": "labor-15", "type": "fill", "prompt": "I ___ with the finance team to close the invoices.", "hint": "trabajé", "answers": ["worked"] }
+      ]
+    },
+    {
+      "id": "colleagues",
+      "title": "partners → colleagues",
+      "wrong": "my partners",
+      "right": "my colleagues",
+      "rule": "«partner» = socio/dueño, pareja o empresa aliada. Compañeros de trabajo = colleagues / coworkers / teammates.",
+      "explanation": "Si decís «my partners» en una entrevista, suena a que eras dueña del negocio o a que hablás de tu pareja. En una consultora como BCG, «Partner» es literalmente el cargo más alto. Para tus compañeros: colleagues, coworkers, teammates, my team.",
+      "examples": [
+        { "wrong": "I helped my partners with difficult calls.", "right": "I helped my colleagues with difficult calls." },
+        { "wrong": "My partners and I covered the shift.", "right": "My teammates and I covered the shift." }
+      ],
+      "exercises": [
+        { "id": "colleagues-01", "type": "mc", "prompt": "I trained two of my ___ on the new Salesforce process.", "options": ["colleagues", "partners", "partner", "companions"], "answer": "colleagues" },
+        { "id": "colleagues-02", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["My colleagues and I covered the extra shifts.", "My partners and I covered the extra shifts.", "My companions and I covered the extra shifts.", "My partner's and I covered the extra shifts."], "answer": "My colleagues and I covered the extra shifts." },
+        { "id": "colleagues-03", "type": "fill", "prompt": "I often helped my ___ when they had difficult calls.", "hint": "compañeros de trabajo", "answers": ["colleagues", "coworkers", "co-workers", "teammates"] },
+        { "id": "colleagues-04", "type": "mc", "prompt": "Aquí «partner» SÍ es correcto: At BCG, ___ are the senior leaders who co-own the firm.", "options": ["partners", "colleagues", "coworkers", "teammates"], "answer": "partners" },
+        { "id": "colleagues-05", "type": "mc", "prompt": "Empresa aliada: Our logistics ___ in Panama handled the transshipment.", "options": ["partner", "colleague", "coworker", "teammate"], "answer": "partner" },
+        { "id": "colleagues-06", "type": "mc", "prompt": "I get along well with my ___.", "options": ["coworkers", "partners", "partner", "companions"], "answer": "coworkers" },
+        { "id": "colleagues-07", "type": "fill", "prompt": "One of my ___ covered my shift when I was sick.", "hint": "compañeros de trabajo", "answers": ["colleagues", "coworkers", "co-workers", "teammates"] },
+        { "id": "colleagues-08", "type": "mc", "prompt": "Pareja: I'm going to the movies with my ___ this weekend.", "options": ["partner", "colleague", "coworker", "teammate"], "answer": "partner" },
+        { "id": "colleagues-09", "type": "mc", "prompt": "I shared the call scripts with the other ___ on my team.", "options": ["agents", "partners", "partner", "socios"], "answer": "agents" },
+        { "id": "colleagues-10", "type": "fill", "prompt": "I coordinated with ___ in the finance department.", "hint": "colegas", "answers": ["colleagues", "coworkers", "co-workers"] },
+        { "id": "colleagues-11", "type": "mc", "prompt": "In my last role, my ___ often asked me to review their emails.", "options": ["teammates", "partners", "partner", "companions"], "answer": "teammates" },
+        { "id": "colleagues-12", "type": "mc", "prompt": "Proveedor: Our ___ in Japan sent the updated price list.", "options": ["supplier", "colleague", "coworker", "teammate"], "answer": "supplier" },
+        { "id": "colleagues-13", "type": "fill", "prompt": "I liked working with my ___; we supported each other a lot.", "hint": "compañeros", "answers": ["colleagues", "coworkers", "co-workers", "teammates", "team"] },
+        { "id": "colleagues-14", "type": "mc", "prompt": "Tell me about a conflict at work. — I disagreed with a ___ about how to prioritize the queue.", "options": ["colleague", "partner", "companion", "partners"], "answer": "colleague" },
+        { "id": "colleagues-15", "type": "mc", "prompt": "I'll loop in my ___ from the customs team.", "options": ["colleague", "partner", "companion", "socio"], "answer": "colleague" }
+      ]
+    },
+    {
+      "id": "plural",
+      "title": "different + plural",
+      "wrong": "different platform",
+      "right": "different platforms",
+      "rule": "Después de different / several / many / various / multiple, el sustantivo va en plural. «different» nunca lleva -s.",
+      "explanation": "En español también es plural («diferentes plataformas»), pero al hablar rápido la -s se cae. Pronunciala a propósito: platform-S, account-S. Y ojo: el adjetivo no cambia → different (nunca «differents»).",
+      "examples": [
+        { "wrong": "I used different platform.", "right": "I used different platforms." },
+        { "wrong": "I handled differents accounts.", "right": "I handled different accounts." }
+      ],
+      "exercises": [
+        { "id": "plural-01", "type": "mc", "prompt": "I used different ___: Salesforce, Oracle and Genesys.", "options": ["platforms", "platform", "platform's", "platformes"], "answer": "platforms" },
+        { "id": "plural-02", "type": "fill", "prompt": "I worked with several ___ in Asia and Europe.", "hint": "supplier", "answers": ["suppliers"] },
+        { "id": "plural-03", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I handled many different accounts.", "I handled many different account.", "I handled many differents accounts.", "I handled much different accounts."], "answer": "I handled many different accounts." },
+        { "id": "plural-04", "type": "fill", "prompt": "I supported customers on three different ___: loans, healthcare and banking.", "hint": "account", "answers": ["accounts"] },
+        { "id": "plural-05", "type": "mc", "prompt": "I coordinated with ___ from five countries.", "options": ["suppliers", "supplier", "a supplier", "supplier's"], "answer": "suppliers" },
+        { "id": "plural-06", "type": "fill", "prompt": "I prepared several customs ___ for each shipment.", "hint": "document", "answers": ["documents"] },
+        { "id": "plural-07", "type": "mc", "prompt": "I used ___ to track orders.", "options": ["different systems", "different system", "differents systems", "different systemes"], "answer": "different systems" },
+        { "id": "plural-08", "type": "fill", "prompt": "I've managed multiple ___ at the same time.", "hint": "priority", "answers": ["priorities"] },
+        { "id": "plural-09", "type": "mc", "prompt": "There were many ___ in the queue that morning.", "options": ["calls", "call", "call's", "calling"], "answer": "calls" },
+        { "id": "plural-10", "type": "fill", "prompt": "I handled different ___ of customers every day.", "hint": "type", "answers": ["types", "kinds"] },
+        { "id": "plural-11", "type": "mc", "prompt": "We worked with various ___.", "options": ["carriers", "carrier", "carrier's", "carrieres"], "answer": "carriers" },
+        { "id": "plural-12", "type": "fill", "prompt": "I learned many new ___ at Concentrix.", "hint": "skill", "answers": ["skills"] },
+        { "id": "plural-13", "type": "mc", "prompt": "I scheduled ___ for the regional manager.", "options": ["several meetings", "several meeting", "several of meeting", "a several meetings"], "answer": "several meetings" },
+        { "id": "plural-14", "type": "fill", "prompt": "Our team supported customers in different time ___.", "hint": "zone", "answers": ["zones"] },
+        { "id": "plural-15", "type": "mc", "prompt": "Elegí la forma correcta:", "options": ["different teams", "differents teams", "different team", "differents team"], "answer": "different teams" }
+      ]
+    },
+    {
+      "id": "to-infinitive",
+      "title": "to + verbo base",
+      "wrong": "to submitting",
+      "right": "to submit",
+      "rule": "Después de «to» (want to, need to, asked to, in order to…) va el verbo base: to submit, to send.",
+      "explanation": "El infinitivo en inglés es «to + verbo sin cambios». Nada de -ing ni -ed después. Excepción famosa: cuando «to» es preposición, va -ing → I look forward to hearing from you. Para entrevistas, memorizá esa frase entera.",
+      "examples": [
+        { "wrong": "I needed to submitting the forms.", "right": "I needed to submit the forms." },
+        { "wrong": "I used Oracle to tracking orders.", "right": "I used Oracle to track orders." }
+      ],
+      "exercises": [
+        { "id": "to-inf-01", "type": "mc", "prompt": "I needed to ___ the forms on time.", "options": ["submit", "submitting", "submitted", "submits"], "answer": "submit" },
+        { "id": "to-inf-02", "type": "mc", "prompt": "My task was to ___ the purchase orders to suppliers.", "options": ["send", "sending", "sent", "sends"], "answer": "send" },
+        { "id": "to-inf-03", "type": "fill", "prompt": "I need to ___ the customs declaration today.", "hint": "submit", "answers": ["submit"] },
+        { "id": "to-inf-04", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I used Oracle to track shipments.", "I used Oracle to tracking shipments.", "I used Oracle to tracked shipments.", "I used Oracle for track shipments."], "answer": "I used Oracle to track shipments." },
+        { "id": "to-inf-05", "type": "fill", "prompt": "I called the broker to ___ the clearance date.", "hint": "confirm", "answers": ["confirm"] },
+        { "id": "to-inf-06", "type": "mc", "prompt": "I'd like to ___ more about the role.", "options": ["learn", "learning", "learned", "learns"], "answer": "learn" },
+        { "id": "to-inf-07", "type": "fill", "prompt": "My goal was to ___ the number of escalations.", "hint": "reduce", "answers": ["reduce"] },
+        { "id": "to-inf-08", "type": "mc", "prompt": "I decided to ___ the issue to my supervisor.", "options": ["escalate", "escalating", "escalated", "escalates"], "answer": "escalate" },
+        { "id": "to-inf-09", "type": "fill", "prompt": "I'm writing to ___ up on our conversation.", "hint": "follow", "answers": ["follow"] },
+        { "id": "to-inf-10", "type": "mc", "prompt": "I was asked to ___ the executive's calendar.", "options": ["manage", "managing", "managed", "manages"], "answer": "manage" },
+        { "id": "to-inf-11", "type": "fill", "prompt": "I'm ready to ___ on more responsibility.", "hint": "take", "answers": ["take"] },
+        { "id": "to-inf-12", "type": "mc", "prompt": "Excepción («to» es preposición): I look forward to ___ from you.", "options": ["hearing", "hear", "heard", "hears"], "answer": "hearing" },
+        { "id": "to-inf-13", "type": "mc", "prompt": "I want to ___ my career in logistics.", "options": ["grow", "growing", "grown", "grows"], "answer": "grow" },
+        { "id": "to-inf-14", "type": "fill", "prompt": "I logged into Salesforce to ___ the case notes.", "hint": "update", "answers": ["update"] },
+        { "id": "to-inf-15", "type": "mc", "prompt": "We need to ___ the invoice before Friday.", "options": ["submit", "submitting", "submitted", "to submit"], "answer": "submit" },
+        { "id": "to-inf-16", "type": "fill", "prompt": "The supplier agreed to ___ the parts earlier.", "hint": "ship", "answers": ["ship"] }
+      ]
+    },
+    {
+      "id": "understood",
+      "title": "Understood → Sure",
+      "wrong": "Understood.",
+      "right": "Sure / Of course / Got it",
+      "rule": "Al responder un pedido, «Understood» suena militar. Usá: Sure · Of course · Will do · Got it · Sounds good.",
+      "explanation": "«Understood» es como decir «Entendido, mi capitán»: seco y jerárquico. En una oficina en EE. UU. suena más natural: Sure / Of course (te piden algo), Will do (una tarea), Got it (información), Sounds good (un plan), Thanks for the heads-up (un aviso).",
+      "examples": [
+        { "wrong": "Can you book the room? — Understood.", "right": "Can you book the room? — Sure, I'll book it now." },
+        { "wrong": "The meeting moved to 3. — Understood.", "right": "The meeting moved to 3. — Got it, thanks." }
+      ],
+      "exercises": [
+        { "id": "understood-01", "type": "mc", "prompt": "Can you book a room for the 3 p.m. meeting?", "options": ["Sure, I'll book it now.", "Understood.", "Affirmative.", "It is understood."], "answer": "Sure, I'll book it now." },
+        { "id": "understood-02", "type": "mc", "prompt": "Please send me the updated shipment tracker by EOD.", "options": ["Will do!", "Understood.", "Copy that, sir.", "Roger."], "answer": "Will do!" },
+        { "id": "understood-03", "type": "mc", "prompt": "Heads-up: the meeting moved to Thursday.", "options": ["Got it, thanks.", "Understood.", "It's understood.", "Affirmative."], "answer": "Got it, thanks." },
+        { "id": "understood-04", "type": "mc", "prompt": "Could you loop me in on that email thread?", "options": ["Of course, adding you now.", "Understood.", "Affirmative.", "Received."], "answer": "Of course, adding you now." },
+        { "id": "understood-05", "type": "fill", "prompt": "Can you print the slides for the client meeting? — ___, I'll have them ready.", "hint": "Claro", "answers": ["Sure", "Of course", "Absolutely", "No problem"] },
+        { "id": "understood-06", "type": "mc", "prompt": "Can you cover the phones for an hour?", "options": ["No problem.", "Understood.", "Affirmative.", "Acknowledged."], "answer": "No problem." },
+        { "id": "understood-07", "type": "mc", "prompt": "Let's meet at 10 instead of 9.", "options": ["Sounds good.", "Understood.", "Affirmative.", "It is understood."], "answer": "Sounds good." },
+        { "id": "understood-08", "type": "mc", "prompt": "Your flight leaves at 6 a.m., so the car will pick you up at 4.", "options": ["Got it, thanks for the heads-up.", "Understood.", "Affirmative.", "Roger that."], "answer": "Got it, thanks for the heads-up." },
+        { "id": "understood-09", "type": "fill", "prompt": "We need these numbers before the board meeting. — ___ do.", "hint": "Lo hago", "answers": ["Will"] },
+        { "id": "understood-10", "type": "mc", "prompt": "Could you reschedule my 2 o'clock?", "options": ["Absolutely, I'll find a new slot.", "Understood.", "Affirmative.", "It is understood."], "answer": "Absolutely, I'll find a new slot." },
+        { "id": "understood-11", "type": "mc", "prompt": "¿Cuál suena más natural en una oficina?", "options": ["Sounds good!", "Understood.", "Affirmative.", "Acknowledged."], "answer": "Sounds good!" },
+        { "id": "understood-12", "type": "fill", "prompt": "Please don't share the board deck outside the team. — ___ it, I'll keep it confidential.", "hint": "Entendido (natural)", "answers": ["Got"] },
+        { "id": "understood-13", "type": "mc", "prompt": "Can you send me the agenda?", "options": ["Sure, sending it now.", "Understood.", "Received.", "Affirmative."], "answer": "Sure, sending it now." },
+        { "id": "understood-14", "type": "mc", "prompt": "Hey, the client is running 10 minutes late.", "options": ["Thanks for the heads-up!", "Understood.", "Affirmative.", "Acknowledged, sir."], "answer": "Thanks for the heads-up!" },
+        { "id": "understood-15", "type": "mc", "prompt": "Can you double-check the hotel booking in Madrid?", "options": ["Of course, I'll confirm it now.", "Understood.", "Affirmative.", "Roger."], "answer": "Of course, I'll confirm it now." }
+      ]
+    },
+    {
+      "id": "in-system",
+      "title": "in Oracle",
+      "wrong": "at the system Oracle",
+      "right": "in Oracle",
+      "rule": "Sistemas y programas llevan «in»: in Oracle, in Salesforce, in the system. El nombre va solo, sin «the system».",
+      "explanation": "in = dentro de un sistema o programa (in Oracle, in Excel, in TICA). at = lugar o empresa (at Concentrix, at BCG). on = teléfono o llamada (on the phone, on a call). No traduzcas «en el sistema Oracle»: decí simplemente «in Oracle».",
+      "examples": [
+        { "wrong": "I created the orders at the system Oracle.", "right": "I created the orders in Oracle." },
+        { "wrong": "I worked in Concentrix.", "right": "I worked at Concentrix." }
+      ],
+      "exercises": [
+        { "id": "in-system-01", "type": "mc", "prompt": "I updated the customer's address ___ Salesforce.", "options": ["in", "at", "at the system", "on the system"], "answer": "in" },
+        { "id": "in-system-02", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I created purchase orders in Oracle.", "I created purchase orders at the system Oracle.", "I created purchase orders at Oracle system.", "I created purchase orders in the system Oracle."], "answer": "I created purchase orders in Oracle." },
+        { "id": "in-system-03", "type": "fill", "prompt": "I logged every case ___ Salesforce.", "hint": "preposición", "answers": ["in"] },
+        { "id": "in-system-04", "type": "fill", "prompt": "I worked ___ Concentrix for three years.", "hint": "preposición (empresa)", "answers": ["at"] },
+        { "id": "in-system-05", "type": "mc", "prompt": "I registered the import declaration ___ TICA.", "options": ["in", "at", "at the system", "on the system of"], "answer": "in" },
+        { "id": "in-system-06", "type": "mc", "prompt": "I was ___ a call when my supervisor came over.", "options": ["on", "in", "at", "into"], "answer": "on" },
+        { "id": "in-system-07", "type": "fill", "prompt": "I tracked my call metrics ___ Genesys.", "hint": "preposición", "answers": ["in"] },
+        { "id": "in-system-08", "type": "mc", "prompt": "I did my internship ___ Veinsa Motors.", "options": ["at", "in", "on", "into"], "answer": "at" },
+        { "id": "in-system-09", "type": "fill", "prompt": "All the invoices are saved ___ the system.", "hint": "preposición", "answers": ["in"] },
+        { "id": "in-system-10", "type": "mc", "prompt": "I'm comfortable working ___ Excel and Oracle.", "options": ["in", "at", "at the system", "on the systems of"], "answer": "in" },
+        { "id": "in-system-11", "type": "mc", "prompt": "She's ___ the phone with the supplier right now.", "options": ["on", "in", "at", "by"], "answer": "on" },
+        { "id": "in-system-12", "type": "fill", "prompt": "I spent most of my day ___ the phone with US customers.", "hint": "preposición", "answers": ["on"] },
+        { "id": "in-system-13", "type": "mc", "prompt": "Where did you check the order status?", "options": ["In Oracle.", "At the system Oracle.", "On the Oracle system of.", "At Oracle system."], "answer": "In Oracle." },
+        { "id": "in-system-14", "type": "fill", "prompt": "I'd like to work ___ a consulting firm like BCG.", "hint": "preposición (empresa)", "answers": ["at", "for"] },
+        { "id": "in-system-15", "type": "mc", "prompt": "I entered the HS codes ___ the customs system.", "options": ["in", "at", "on the system of", "to"], "answer": "in" },
+        { "id": "in-system-16", "type": "fill", "prompt": "I updated the delivery dates ___ Oracle.", "hint": "preposición", "answers": ["in"] }
+      ]
+    },
+    {
+      "id": "we-to-i",
+      "title": "we → I cuando lo hiciste vos",
+      "wrong": "We created a tracker…",
+      "right": "I created a tracker…",
+      "rule": "En entrevistas, cuando contás lo que VOS hiciste, usá «I». «We» borra tu mérito.",
+      "explanation": "El entrevistador está evaluándote a vos, no a tu equipo. Usá «we» o «our team» solo para el contexto («Our team had a backlog of 200 cases»), y «I» para cada acción y resultado tuyo («I proposed…», «I reduced…»).",
+      "examples": [
+        { "wrong": "We built a checklist and reduced errors.", "right": "I built a checklist, and that reduced errors by 30%." },
+        { "wrong": "We called the broker.", "right": "I called the broker." }
+      ],
+      "exercises": [
+        { "id": "we-to-i-01", "type": "mc", "prompt": "Tell me about a time you solved a problem. ¿Qué frase de Action te da el mérito?", "options": ["I created a tracker to follow up on every pending order.", "We created a tracker to follow up on every pending order.", "They created a tracker to follow up on every pending order.", "A tracker was created to follow up on every pending order."], "answer": "I created a tracker to follow up on every pending order." },
+        { "id": "we-to-i-02", "type": "mc", "prompt": "What did you do when the shipment was delayed?", "options": ["I contacted the broker and reorganized the delivery schedule.", "We contacted the broker and reorganized the delivery schedule.", "The team contacted the broker and reorganized the delivery schedule.", "The broker was contacted and the schedule was reorganized."], "answer": "I contacted the broker and reorganized the delivery schedule." },
+        { "id": "we-to-i-03", "type": "fill", "prompt": "Our team had a backlog of 200 cases, so ___ proposed a new triage process.", "hint": "yo", "answers": ["I"] },
+        { "id": "we-to-i-04", "type": "mc", "prompt": "¿Qué frase te da crédito a vos?", "options": ["I trained three new agents on the loan process.", "We trained three new agents on the loan process.", "New agents were trained on the loan process.", "There was training for three new agents."], "answer": "I trained three new agents on the loan process." },
+        { "id": "we-to-i-05", "type": "mc", "prompt": "How did you handle an angry customer?", "options": ["I listened to her concerns and offered a payment plan.", "We listened to her concerns and offered a payment plan.", "Her concerns were listened to and a plan was offered.", "We listen to her concerns and offer a payment plan."], "answer": "I listened to her concerns and offered a payment plan." },
+        { "id": "we-to-i-06", "type": "fill", "prompt": "___ reviewed every purchase order before it went to the supplier.", "hint": "yo", "answers": ["I"] },
+        { "id": "we-to-i-07", "type": "mc", "prompt": "¿Cuál usa «we/our team» bien (solo contexto) y «I» para la acción?", "options": ["Our team was handling 300 calls a day, so I suggested a callback system.", "We was handling 300 calls a day, so I suggested a callback system.", "Our team was handling 300 calls a day, so we suggested a callback system.", "I was handling 300 calls a day, so our team suggested a callback system."], "answer": "Our team was handling 300 calls a day, so I suggested a callback system." },
+        { "id": "we-to-i-08", "type": "mc", "prompt": "Tell me about a time you took initiative.", "options": ["I noticed the customs forms had repeated errors, so I built a checklist.", "We noticed the customs forms had repeated errors, so we built a checklist.", "Errors were noticed and a checklist was built.", "The team noticed errors, so they built a checklist."], "answer": "I noticed the customs forms had repeated errors, so I built a checklist." },
+        { "id": "we-to-i-09", "type": "fill", "prompt": "When my manager was double-booked, ___ rescheduled the less urgent meeting.", "hint": "yo", "answers": ["I"] },
+        { "id": "we-to-i-10", "type": "mc", "prompt": "Result:", "options": ["As a result, I reduced documentation errors by 30%.", "As a result, we reduced documentation errors by 30%.", "As a result, errors were reduced.", "As a result, the team reduce errors."], "answer": "As a result, I reduced documentation errors by 30%." },
+        { "id": "we-to-i-11", "type": "mc", "prompt": "I worked with the finance team, and ___ personally handled the reconciliation.", "options": ["I", "we", "they", "us"], "answer": "I" },
+        { "id": "we-to-i-12", "type": "fill", "prompt": "___ took ownership of the escalated cases.", "hint": "yo", "answers": ["I"] },
+        { "id": "we-to-i-13", "type": "mc", "prompt": "¿Cuál es la mejor frase para tu CV oral?", "options": ["I coordinated with suppliers in Japan and Germany to confirm delivery dates.", "We coordinated with suppliers in Japan and Germany to confirm delivery dates.", "Coordination with suppliers in Japan and Germany was done.", "Suppliers in Japan and Germany were coordinated."], "answer": "I coordinated with suppliers in Japan and Germany to confirm delivery dates." },
+        { "id": "we-to-i-14", "type": "fill", "prompt": "My supervisor asked me for help, so ___ created a step-by-step guide.", "hint": "yo", "answers": ["I"] },
+        { "id": "we-to-i-15", "type": "mc", "prompt": "What was your role?", "options": ["I was responsible for verifying the import documents.", "We were responsible for verifying the import documents.", "The import documents were verified.", "Our responsibility were verify documents."], "answer": "I was responsible for verifying the import documents." }
+      ]
+    }
+  ]
+}
