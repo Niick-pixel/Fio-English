@@ -18,7 +18,7 @@ como BCG, logística y comercio exterior).
 | Fase | Contenido | Estado |
 |---|---|---|
 | 1 | Esqueleto, navegación, Dashboard, **Error Killer** | ✅ Lista |
-| 2 | Tiempos verbales, Registro (call center → oficina), Colocaciones | Pendiente |
+| 2 | Tiempos verbales, Registro (call center → oficina), Colocaciones | ✅ Lista |
 | 3 | Vocabulario con repetición espaciada, Progreso | Pendiente |
 | 4 | Constructor STAR, Simulador de entrevista | Pendiente |
 | 5 | Husos horarios, empaquetado del `.app` | Pendiente |
@@ -144,6 +144,53 @@ Reglas para no romper nada:
 3. Para un **error nuevo**, agregá un bloque más a la lista `errors` con su propio `id`.
 4. Comillas dobles `"` siempre, y coma entre elementos (pero no después del último).
 
+### `content/tenses.json` — Tiempos verbales
+
+Mismo formato que `errors.json`, pero la lista se llama `topics` y cada tema no necesita
+`wrong`/`right`. Temas actuales: `for-ago-since`, `past-vs-perfect`, `will-going-to`,
+`would-routines`. Para agregar un ejercicio, sumalo a `exercises` del tema que corresponda.
+
+### `content/register.json` — Registro (call center → oficina)
+
+Las `categories` son las situaciones (disculpas, avisos, pedidos…). Cada par va en `pairs`:
+
+```json
+{
+  "id": "reg-45",
+  "category": "requests",
+  "context": "Email a un proveedor",
+  "callcenter": "Kindly provide the tracking number at the earliest.",
+  "corporate": "Could you send me the tracking number?",
+  "distractors": ["Please be so kind as to provide the tracking number.", "Send the tracking number."],
+  "note": "Explicación corta que aparece al responder."
+}
+```
+
+- `category` tiene que ser el `id` de una categoría existente.
+- `distractors`: lo ideal son dos, uno todavía demasiado guionado y uno demasiado brusco.
+
+### `content/collocations.json` — Colocaciones
+
+Los `groups` son los verbos (`make`, `do`, `take`, `pay`, `gain`, `other`). Cada ítem:
+
+```json
+{
+  "id": "col-make-16",
+  "group": "make",
+  "collocation": "make an exception",
+  "es": "hacer una excepción",
+  "trap": "do",
+  "prompt": "Could you ___ an exception for this order?"
+}
+```
+
+- La respuesta es la primera palabra de `collocation` (o poné `"answer"` si no lo es).
+- `trap` es el error típico en español; siempre aparece como opción y en el feedback se muestra
+  tachado (*do an exception → make an exception*).
+- Si no ponés `options`, se completan con `defaultOptions` (make, do, take, pay, gain).
+  **Ojo:** si alguno de esos verbos también sería correcto (por ejemplo *take a course* y
+  *do a course*), poné `"options"` a mano con solo una respuesta válida.
+
 ## Cómo funciona la repetición espaciada
 
 | Resultado | Vuelve a aparecer en |
@@ -168,6 +215,7 @@ renderer/
   index.html, styles.css
   app.js                Navegación y registro de módulos
   lib/core.js           Lógica pura: fechas, repetición espaciada, racha (con tests)
+  lib/drill.js          Motor de ejercicios compartido (sesión, feedback, resumen)
   lib/store.js          Progreso del usuario
   lib/ui.js             Ayudantes de interfaz e íconos
   modules/              Un archivo por módulo

@@ -1,0 +1,118 @@
+{
+  "_info": "Tiempos verbales. Mismo formato que errors.json: cada tema tiene regla, explicación, ejemplos y ejercicios ('mc' u 'fill'). Los 'id' de ejercicios deben ser únicos.",
+  "topics": [
+    {
+      "id": "for-ago-since",
+      "title": "for · ago · since",
+      "rule": "for + duración · ago = hace tanto tiempo (con pasado simple) · since + punto de inicio (con present perfect).",
+      "explanation": "for three years (cuánto duró) · three years ago (cuándo pasó, mirando hacia atrás desde hoy) · since 2022 / since Monday / since I joined (desde cuándo, y sigue hasta hoy). «since» casi siempre va con present perfect: I've worked here since 2022.",
+      "examples": [
+        { "wrong": "I've worked in customer service since three years.", "right": "I've worked in customer service for three years." },
+        { "wrong": "I have this job since 2023.", "right": "I've had this job since 2023." }
+      ],
+      "exercises": [
+        { "id": "ten-fas-01", "type": "mc", "prompt": "I've worked in customer service ___ 2022.", "options": ["since", "for", "ago", "from"], "answer": "since" },
+        { "id": "ten-fas-02", "type": "mc", "prompt": "I've used Oracle ___ two years.", "options": ["for", "since", "ago", "during"], "answer": "for" },
+        { "id": "ten-fas-03", "type": "mc", "prompt": "The container arrived at Puerto Limón three days ___.", "options": ["ago", "for", "since", "from"], "answer": "ago" },
+        { "id": "ten-fas-04", "type": "fill", "prompt": "I haven't heard from the supplier in Germany ___ Monday.", "hint": "for / ago / since", "answers": ["since"] },
+        { "id": "ten-fas-05", "type": "fill", "prompt": "The meeting was moved two hours ___.", "hint": "for / ago / since", "answers": ["ago"] },
+        { "id": "ten-fas-06", "type": "mc", "prompt": "She's been on that call ___ 45 minutes.", "options": ["for", "since", "ago", "during"], "answer": "for" },
+        { "id": "ten-fas-07", "type": "mc", "prompt": "I've known about the customs inspection ___ this morning.", "options": ["since", "for", "ago", "from ago"], "answer": "since" },
+        { "id": "ten-fas-08", "type": "fill", "prompt": "I worked on the healthcare account ___ eight months.", "hint": "for / ago / since", "answers": ["for"] },
+        { "id": "ten-fas-09", "type": "mc", "prompt": "We've been waiting for the bill of lading ___ last Friday.", "options": ["since", "for", "ago", "from"], "answer": "since" },
+        { "id": "ten-fas-10", "type": "mc", "prompt": "My manager approved the purchase order a week ___.", "options": ["ago", "since", "for", "before ago"], "answer": "ago" },
+        { "id": "ten-fas-11", "type": "fill", "prompt": "The shipment has been held at customs ___ five days.", "hint": "for / ago / since", "answers": ["for"] },
+        { "id": "ten-fas-12", "type": "mc", "prompt": "How long have you lived in San José? — ___ I was ten.", "options": ["Since", "For", "Ago", "From ago"], "answer": "Since" },
+        { "id": "ten-fas-13", "type": "fill", "prompt": "I've been in this role ___ March.", "hint": "for / ago / since", "answers": ["since"] },
+        { "id": "ten-fas-14", "type": "mc", "prompt": "I sent the reminder about an hour ___.", "options": ["ago", "for", "since", "past"], "answer": "ago" },
+        { "id": "ten-fas-15", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I've had this job since 2023.", "I have this job since 2023.", "I've had this job for 2023.", "I had this job since 2023 ago."], "answer": "I've had this job since 2023." },
+        { "id": "ten-fas-16", "type": "fill", "prompt": "The CEO has been in Madrid ___ two weeks.", "hint": "for / ago / since", "answers": ["for"] },
+        { "id": "ten-fas-17", "type": "mc", "prompt": "I talked to the customs broker ___.", "options": ["two days ago", "since two days", "for two days ago", "ago two days"], "answer": "two days ago" }
+      ]
+    },
+    {
+      "id": "past-vs-perfect",
+      "title": "Past Simple vs Present Perfect",
+      "rule": "Past Simple = acción terminada en un momento definido. Present Perfect = experiencia o resultado que importa ahora, sin momento definido.",
+      "explanation": "Past Simple con yesterday, last week, in 2023, «at Concentrix» (un trabajo que ya terminó): I handled 60 calls a day. Present Perfect con ever, never, already, yet, so far, this week (aún no termina), o for/since hasta hoy: I've worked with suppliers from five countries. Si decís CUÁNDO, va pasado simple.",
+      "examples": [
+        { "wrong": "I have finished my degree in 2023.", "right": "I finished my degree in 2023." },
+        { "wrong": "I never was in Madrid.", "right": "I've never been to Madrid." }
+      ],
+      "exercises": [
+        { "id": "ten-pp-01", "type": "mc", "prompt": "I ___ at Concentrix from 2021 to 2024.", "options": ["worked", "have worked", "have been working", "work"], "answer": "worked" },
+        { "id": "ten-pp-02", "type": "mc", "prompt": "I ___ with suppliers from five countries so far in my career.", "options": ["have worked", "worked", "work", "was working"], "answer": "have worked" },
+        { "id": "ten-pp-03", "type": "mc", "prompt": "Yesterday I ___ the customs declaration in TICA.", "options": ["submitted", "have submitted", "submit", "have submit"], "answer": "submitted" },
+        { "id": "ten-pp-04", "type": "mc", "prompt": "___ you ever ___ an executive's calendar?", "options": ["Have / managed", "Did / managed", "Have / manage", "Did / manage"], "answer": "Have / managed" },
+        { "id": "ten-pp-05", "type": "mc", "prompt": "I have ___ the agenda. Check your inbox.", "options": ["already sent", "already send", "already sending", "sent already been"], "answer": "already sent" },
+        { "id": "ten-pp-06", "type": "mc", "prompt": "Last month I ___ three new agents.", "options": ["trained", "have trained", "train", "have train"], "answer": "trained" },
+        { "id": "ten-pp-07", "type": "mc", "prompt": "The supplier hasn't confirmed the delivery date ___.", "options": ["yet", "already", "ago", "since"], "answer": "yet" },
+        { "id": "ten-pp-08", "type": "mc", "prompt": "When ___ you ___ at Veinsa Motors?", "options": ["did / start", "have / started", "did / started", "have / start"], "answer": "did / start" },
+        { "id": "ten-pp-09", "type": "fill", "prompt": "I ___ an executive assistant before, but I've supported managers in other roles.", "hint": "be — negativo, present perfect", "answers": ["haven't been", "have not been"] },
+        { "id": "ten-pp-10", "type": "mc", "prompt": "Tell me about your last job. — At Concentrix, I ___ US customers with loans, healthcare and banking.", "options": ["helped", "have helped", "help", "have been helping"], "answer": "helped" },
+        { "id": "ten-pp-11", "type": "mc", "prompt": "I ___ three interviews this month, and I have one more on Friday.", "options": ["have had", "had", "have", "was having"], "answer": "have had" },
+        { "id": "ten-pp-12", "type": "mc", "prompt": "The shipment ___ yesterday at 4 p.m.", "options": ["arrived", "has arrived", "arrives", "has arrive"], "answer": "arrived" },
+        { "id": "ten-pp-13", "type": "mc", "prompt": "Good news: the shipment ___! It's at the warehouse now.", "options": ["has arrived", "has arrived yesterday", "arrives", "was arriving"], "answer": "has arrived" },
+        { "id": "ten-pp-14", "type": "fill", "prompt": "In 2023 I ___ my degree in International Trade.", "hint": "finish", "answers": ["finished"] },
+        { "id": "ten-pp-15", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I've used Salesforce for three years, and I still use it.", "I use Salesforce for three years.", "I've used Salesforce in 2022.", "I used Salesforce since 2022."], "answer": "I've used Salesforce for three years, and I still use it." },
+        { "id": "ten-pp-16", "type": "mc", "prompt": "I ___ to Madrid, but I'd love to go.", "options": ["have never been", "never went", "was never", "never have gone"], "answer": "have never been" },
+        { "id": "ten-pp-17", "type": "fill", "prompt": "We ___ a client's file last year, so I created a backup system.", "hint": "lose", "answers": ["lost"] }
+      ]
+    },
+    {
+      "id": "will-going-to",
+      "title": "will vs going to",
+      "rule": "going to = plan ya decidido o predicción con evidencia. will = decisión en el momento, ofrecimiento, promesa o predicción sin evidencia.",
+      "explanation": "Si lo decidís mientras hablás, «I'll»: I'll send it now / I'll check and get back to you. Si ya estaba planeado antes, «going to»: I'm going to visit the supplier next month. Con evidencia visible: Look at the queue — we're going to have a busy morning.",
+      "examples": [
+        { "wrong": "Can you send the minutes? — Sure, I'm going to send them now.", "right": "Can you send the minutes? — Sure, I'll send them now." },
+        { "wrong": "I've booked my flight. I will visit the supplier next month.", "right": "I've booked my flight. I'm going to visit the supplier next month." }
+      ],
+      "exercises": [
+        { "id": "ten-wg-01", "type": "mc", "prompt": "The phone's ringing. — ___ get it!", "options": ["I'll", "I'm going to", "I going to", "I will to"], "answer": "I'll" },
+        { "id": "ten-wg-02", "type": "mc", "prompt": "I've booked my flight. I ___ visit the supplier in Shenzhen next month.", "options": ["am going to", "will", "going to", "am will"], "answer": "am going to" },
+        { "id": "ten-wg-03", "type": "mc", "prompt": "Can someone send the minutes? — Sure, I ___ send them right now.", "options": ["will", "am going to", "going", "would"], "answer": "will" },
+        { "id": "ten-wg-04", "type": "mc", "prompt": "Look at the queue! We ___ have a busy morning.", "options": ["are going to", "will to", "going", "would"], "answer": "are going to" },
+        { "id": "ten-wg-05", "type": "mc", "prompt": "I promise I ___ have the report ready by EOD.", "options": ["will", "am going to", "going to", "would"], "answer": "will" },
+        { "id": "ten-wg-06", "type": "fill", "prompt": "It's already decided: we ___ switch carriers in January.", "hint": "plan decidido (be going to)", "answers": ["are going to", "'re going to"] },
+        { "id": "ten-wg-07", "type": "mc", "prompt": "Don't worry about the slides — I ___ print them for you.", "options": ["will", "am going to", "going to", "would"], "answer": "will" },
+        { "id": "ten-wg-08", "type": "mc", "prompt": "Any plans for the weekend? — Yes, I ___ visit my family in Cartago.", "options": ["am going to", "will", "going", "would"], "answer": "am going to" },
+        { "id": "ten-wg-09", "type": "mc", "prompt": "Where do you see yourself in three years? — I think I ___ be supporting a senior leadership team.", "options": ["will", "would", "am", "going"], "answer": "will" },
+        { "id": "ten-wg-10", "type": "mc", "prompt": "The vessel left Shanghai a week late, so the shipment ___ arrive late.", "options": ["is going to", "will to", "going", "is will"], "answer": "is going to" },
+        { "id": "ten-wg-11", "type": "fill", "prompt": "Is the meeting confirmed? — I'm not sure. I ___ check and get back to you.", "hint": "decisión en el momento", "answers": ["will", "'ll"] },
+        { "id": "ten-wg-12", "type": "mc", "prompt": "My manager scheduled the review last week. She ___ meet with the team on Monday.", "options": ["is going to", "will to", "going", "would"], "answer": "is going to" },
+        { "id": "ten-wg-13", "type": "mc", "prompt": "I have a hard stop at 6. — No problem, I ___ be quick.", "options": ["will", "am going to", "would", "going to"], "answer": "will" },
+        { "id": "ten-wg-14", "type": "mc", "prompt": "¿Cuál es correcta?", "options": ["I'll call the broker now.", "I call the broker now, I promise.", "I going to call the broker now.", "I will to call the broker now."], "answer": "I'll call the broker now." },
+        { "id": "ten-wg-15", "type": "mc", "prompt": "We ___ launch the new tracking system next quarter — it's already in the budget.", "options": ["are going to", "will to", "going", "would"], "answer": "are going to" },
+        { "id": "ten-wg-16", "type": "fill", "prompt": "That box looks heavy. I ___ help you with it.", "hint": "ofrecimiento", "answers": ["will", "'ll"] }
+      ]
+    },
+    {
+      "id": "would-routines",
+      "title": "would para rutinas del pasado",
+      "rule": "would + verbo = acción que se repetía en el pasado. Para estados (be, have, live, like) usá «used to».",
+      "explanation": "Ideal para describir un día típico de un trabajo anterior: «Every morning I would open my systems, check the queue and take my first call at 7:15.» Suena natural y mantiene el pasado sin repetir «I did…, I did…». Pero con estados no: «I used to live in Heredia» (no «I would live»).",
+      "examples": [
+        { "wrong": "Every morning I open Salesforce before my first call. (hablando de Concentrix)", "right": "Every morning I would open Salesforce before my first call." },
+        { "wrong": "I would live in Heredia when I worked there.", "right": "I used to live in Heredia when I worked there." }
+      ],
+      "exercises": [
+        { "id": "ten-wr-01", "type": "mc", "prompt": "At Concentrix, every morning I ___ open Salesforce and Genesys before my first call.", "options": ["would", "will", "am", "was"], "answer": "would" },
+        { "id": "ten-wr-02", "type": "mc", "prompt": "Before each shift, the team lead ___ share the daily targets.", "options": ["would", "will", "has", "is"], "answer": "would" },
+        { "id": "ten-wr-03", "type": "mc", "prompt": "Estado, no acción: I ___ live in Heredia when I worked at Concentrix.", "options": ["used to", "would", "will", "am used to"], "answer": "used to" },
+        { "id": "ten-wr-04", "type": "fill", "prompt": "During my internship, I ___ check the status of every shipment in TICA each afternoon.", "hint": "rutina pasada", "answers": ["would", "used to"] },
+        { "id": "ten-wr-05", "type": "mc", "prompt": "On busy Mondays, we ___ get more than 100 calls before noon.", "options": ["would", "will", "are", "have"], "answer": "would" },
+        { "id": "ten-wr-06", "type": "mc", "prompt": "Estado, no acción: My old manager ___ have a very strict schedule.", "options": ["used to", "would", "will", "has used"], "answer": "used to" },
+        { "id": "ten-wr-07", "type": "fill", "prompt": "After every call, I ___ document the case in Salesforce.", "hint": "rutina pasada", "answers": ["would", "used to"] },
+        { "id": "ten-wr-08", "type": "mc", "prompt": "¿Cuál describe bien una rutina pasada?", "options": ["Every Friday, I would send the weekly report to the import manager.", "Every Friday, I will send the weekly report to the import manager.", "Every Friday, I would sent the weekly report to the import manager.", "Every Friday, I'm sending the weekly report to the import manager."], "answer": "Every Friday, I would send the weekly report to the import manager." },
+        { "id": "ten-wr-09", "type": "mc", "prompt": "When a supplier was late, I ___ call them and ask for a new date.", "options": ["would", "will", "am", "have"], "answer": "would" },
+        { "id": "ten-wr-10", "type": "fill", "prompt": "My typical day started at 7. I ___ log in, review my emails and take my first call at 7:15.", "hint": "rutina pasada", "answers": ["would", "used to"] },
+        { "id": "ten-wr-11", "type": "mc", "prompt": "Estado, no acción: I ___ be very shy on the phone, but now I'm confident.", "options": ["used to", "would", "will", "am used to"], "answer": "used to" },
+        { "id": "ten-wr-12", "type": "mc", "prompt": "Each month, the Japanese supplier ___ send us an updated price list.", "options": ["would", "will", "is", "has"], "answer": "would" },
+        { "id": "ten-wr-13", "type": "fill", "prompt": "Whenever a customer was upset, I ___ listen first and then explain the options.", "hint": "rutina pasada", "answers": ["would", "used to"] },
+        { "id": "ten-wr-14", "type": "mc", "prompt": "Describe a typical day at your last job. — I ___ start by checking the queue and my calendar.", "options": ["would", "will", "am going to", "have"], "answer": "would" },
+        { "id": "ten-wr-15", "type": "mc", "prompt": "Estado, no acción: I ___ have a desk near the window at Veinsa.", "options": ["used to", "would", "will", "use to"], "answer": "used to" }
+      ]
+    }
+  ]
+}

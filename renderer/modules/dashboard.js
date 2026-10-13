@@ -25,7 +25,16 @@
   App.register('dashboard', {
     async render(view) {
       const ek = App.impl('error-killer');
-      const [week, due, tomorrow] = await Promise.all([ek.weekError(), ek.dueCount(), ek.dueTomorrow()]);
+      // Repasos pendientes de todos los módulos con repetición espaciada.
+      const drills = App.MODULES.filter((m) => App.isReady(m.id) && App.impl(m.id).dueCount);
+      const [week, dues, tomorrows] = await Promise.all([
+        ek.weekError(),
+        Promise.all(drills.map((m) => App.impl(m.id).dueCount())),
+        Promise.all(drills.map((m) => App.impl(m.id).dueTomorrow())),
+      ]);
+      const due = dues.reduce((a, b) => a + b, 0);
+      const tomorrow = tomorrows.reduce((a, b) => a + b, 0);
+      const dueModules = drills.map((m, i) => ({ m, n: dues[i] })).filter((x) => x.n).sort((a, b) => b.n - a.n);
       const today = Store.todayStats();
       const s = Store.streak();
       const acc = today.total ? Math.round((100 * today.correct) / today.total) : null;
@@ -42,7 +51,8 @@
         h('div', { class: 'card' },
           h('div', { class: 'stat-label' }, icon('target'), 'Repasos pendientes'),
           h('div', { class: 'stat-value' }, due),
-          due ? h('button', { class: 'btn ghost', style: { marginTop: '4px', marginLeft: '-6px' }, onclick: () => App.go('error-killer') }, 'Repasar ahora', icon('arrow'))
+          due ? h('div', { class: 'due-list' }, dueModules.map((x) => `${x.m.title} ${x.n}`).join(' · ')) : null,
+          due ? h('button', { class: 'btn ghost', style: { marginTop: '2px', marginLeft: '-6px' }, onclick: () => App.go(dueModules[0].m.id) }, 'Repasar ahora', icon('arrow'))
             : h('div', { class: 'stat-sub' }, tomorrow ? `Todo al día. Mañana: ${tomorrow}.` : 'Todo al día.')));
 
       const featured = week ? h('div', { class: 'feature' },
@@ -50,7 +60,7 @@
         h('div', { class: 'pair en' }, h('span', { class: 'wrong' }, week.err.wrong), h('span', { class: 'arrow' }, '→'), h('span', { class: 'right' }, week.err.right)),
         h('div', { class: 'rule' }, week.err.rule),
         h('div', { class: 'row' },
-          h('button', { class: 'btn primary', onclick: () => App.go('error-killer', { errorId: week.err.id }) }, 'Practicar este error'),
+          h('button', { class: 'btn primary', onclick: () => App.go('error-killer', { groupId: week.err.id }) }, 'Practicar este error'),
           h('span', { class: 'muted small' }, week.reason))) : null;
 
       const rows = [];

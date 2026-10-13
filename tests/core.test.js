@@ -46,16 +46,8 @@ test('respuestas escritas: mayúsculas, puntuación y apóstrofos', () => {
   assert.ok(Core.checkAnswer({ type: 'fill', answers: ["I'm"] }, 'I’m'));
 });
 
-test('el contenido de errors.json es válido', () => {
-  const data = require('../content/errors.json');
-  const ids = new Set();
-  for (const err of data.errors) {
-    assert.ok(err.exercises.length >= 15, `${err.id} tiene menos de 15 ejercicios`);
-    for (const ex of err.exercises) {
-      assert.ok(!ids.has(ex.id), 'id repetido ' + ex.id);
-      ids.add(ex.id);
-      if (ex.type === 'mc') assert.ok(ex.options.includes(ex.answer), ex.id);
-      else assert.ok(ex.answers.length && ex.prompt.includes('___'), ex.id);
-    }
-  }
+test('todo el contenido de /content es válido', () => {
+  const { validate } = require('../scripts/validate-content.js');
+  const { problems } = validate();
+  assert.deepStrictEqual(problems, []);
 });

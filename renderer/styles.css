@@ -382,3 +382,13 @@ p { margin: 0 0 10px; }
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 5px; border: 3px solid transparent; background-clip: padding-box; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- Fase 2: grupos y frases citadas ---------- */
+.group-title { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+.prompt.quote {
+  font-style: italic;
+  border-left: 3px solid var(--border-strong);
+  padding-left: 14px;
+  color: var(--text);
+}
+.due-list { font-size: 12px; color: var(--text-2); margin-top: 2px; }
