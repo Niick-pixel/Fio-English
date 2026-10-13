@@ -48,10 +48,23 @@ npm run dist       # crea dist/English Coach-<versión>-arm64.dmg y .zip (Apple 
 npm run dist:dir   # solo la carpeta con el .app, sin instalador (más rápido)
 ```
 
-Hay que correrlo **en una Mac**. El resultado queda en `dist/`. La app no está firmada con un
-certificado de Apple, así que la primera vez macOS la bloquea: hacé **clic derecho → Abrir →
-Abrir** (o en *Ajustes del Sistema → Privacidad y seguridad → Abrir igualmente*). Solo hace falta
-una vez.
+Hay que correrlo **en una Mac** (desde Linux o Windows el paquete sale roto: no se puede firmar y
+el `.zip` pierde los enlaces internos del framework). El resultado queda en `dist/`; para instalar,
+abrí el `.dmg` y arrastrá **English Coach** a *Aplicaciones*.
+
+Durante el build vas a ver `firma ad-hoc aplicada`: es una firma local gratuita
+(`scripts/after-pack.js`) sin la cual los Mac con Apple Silicon dicen que la app "está dañada".
+Como no es un certificado de Apple, la primera vez macOS la bloquea igual: hacé **clic derecho →
+Abrir → Abrir** (o en *Ajustes del Sistema → Privacidad y seguridad → Abrir igualmente*). Solo hace
+falta una vez.
+
+Si aun así macOS dice que la app "está dañada" (pasa a veces con apps descargadas o copiadas por
+AirDrop), quitale la marca de cuarentena y volvé a firmarla:
+
+```bash
+xattr -cr "/Applications/English Coach.app"
+codesign --force --deep --sign - "/Applications/English Coach.app"
+```
 
 ## Dónde se guarda mi progreso
 

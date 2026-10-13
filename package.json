@@ -53,6 +53,7 @@
       "extendInfo": {
         "NSMicrophoneUsageDescription": "English Coach usa el micrófono para grabar tus respuestas en el simulador de entrevista. Las grabaciones se guardan solo en tu Mac."
       }
-    }
+    },
+    "afterPack": "scripts/after-pack.js"
   }
 }
