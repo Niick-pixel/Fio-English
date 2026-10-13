@@ -11,7 +11,7 @@
   const { shuffle, checkAnswer, diffDays, addDays, MASTERED_BOX } = window.Core;
   const Store = window.Store;
 
-  const SESSION_SIZE = 15;
+  const DEFAULT_SESSION_SIZE = 15;
 
   // Avance de un ítem hacia "dominado": 0, ½ tras el primer acierto, 1 al dominarlo.
   function itemProgress(key) {
@@ -26,6 +26,8 @@
 
   function create(cfg) {
     const MODULE = cfg.id;
+    const SESSION_SIZE = cfg.sessionSize || DEFAULT_SESSION_SIZE;
+    const W = { one: 'ejercicio', many: 'ejercicios', newOne: 'ejercicio nuevo', newMany: 'ejercicios nuevos', ...cfg.words };
     const tagOf = (group) => (cfg.tagPrefix || '') + group.id;
     let sessionCleanup = null;
 
@@ -89,6 +91,14 @@
           if (p.list.length) { queue.push(p.list.shift()); added = true; }
         }
       }
+      // Nada pendiente ni nuevo: práctica libre con lo que tenés menos firme (y lo que vence antes).
+      if (!queue.length) {
+        const byWeakest = shuffle(items).sort((a, b) => {
+          const sa = Store.srsState(a.key), sb = Store.srsState(b.key);
+          return (sa.box - sb.box) || sa.due.localeCompare(sb.due);
+        });
+        queue.push(...byWeakest.slice(0, SESSION_SIZE));
+      }
       return shuffle(queue);
     }
 
@@ -108,8 +118,8 @@
       const startBtn = h('button', {
         class: 'btn primary large',
         onclick: () => startSession(view, buildReview(items, groups), 'Repaso del día'),
-        disabled: due + fresh === 0,
-      }, due ? `Repasar ${plural(due, 'pendiente', 'pendientes')}` : 'Empezar sesión', h('span', { class: 'kbd' }, '↵'));
+        disabled: items.length === 0,
+      }, due ? `Repasar ${plural(due, 'pendiente', 'pendientes')}` : fresh ? 'Empezar sesión' : 'Practicar igual', h('span', { class: 'kbd' }, '↵'));
 
       const page = h('div', { class: 'page' },
         h('h1', null, cfg.title),
@@ -119,16 +129,17 @@
           h('div', { class: 'row' },
             h('div', null,
               h('div', { style: { fontSize: '17px', fontWeight: 600 } },
-                due ? `${plural(due, 'ejercicio pendiente', 'ejercicios pendientes')} de repaso` : 'No tenés repasos pendientes'),
+                due ? `${plural(due, `${W.one} pendiente`, `${W.many} pendientes`)} de repaso` : 'No tenés repasos pendientes'),
               h('div', { class: 'muted small' },
-                fresh ? `${plural(fresh, 'ejercicio nuevo', 'ejercicios nuevos')} sin estrenar · hasta ${SESSION_SIZE} por sesión` : 'Ya viste todos los ejercicios. ¡Seguí repasando!')),
+                fresh ? `${plural(fresh, W.newOne, W.newMany)} sin estrenar · hasta ${SESSION_SIZE} por sesión` : 'Ya viste todo. «Practicar igual» te trae lo que tenés menos firme.')),
             h('div', { class: 'spacer' }),
             startBtn)),
+        cfg.homeExtra ? cfg.homeExtra() : null,
         h('h2', null, cfg.groupsHeading || 'Temas'),
         h('div', { class: 'grid grid-2' }, groups.map((group) => groupCard(view, group, items))));
 
       view.append(page);
-      const onKey = (e) => { if (e.key === 'Enter' && startBtn.isConnected && !startBtn.disabled) startBtn.click(); };
+      const onKey = (e) => { if (e.key === 'Enter' && startBtn.isConnected && !startBtn.disabled) { e.preventDefault(); startBtn.click(); } };
       window.addEventListener('keydown', onKey);
       return () => window.removeEventListener('keydown', onKey);
     }
@@ -140,7 +151,7 @@
         title: cfg.focusHint || 'Practicar solo este tema',
         onclick: () => startSession(view, buildFocused(items, group), group.title, group),
       },
-        h('div', { class: 'title' }, h('span', null, group.wrong ? group.title : `${s.total} ejercicios`),
+        h('div', { class: 'title' }, h('span', null, group.wrong ? group.title : `${s.total} ${W.many}`),
           s.due ? h('span', { class: 'chip due' }, `${s.due} pendientes`) : null),
         group.wrong
           ? pairNode(group.wrong, group.right)
@@ -169,6 +180,7 @@
 
     function renderQuestion(view, state) {
       const item = state.queue[state.index];
+      if (item.ex.type === 'card') return renderCard(view, state);
       const { ex, group } = item;
       const isRetry = !!item.retry;
       const options = ex.type === 'mc' ? shuffle(ex.options) : null;
@@ -267,6 +279,73 @@
       };
     }
 
+    // Flashcard: frente → mostrar respuesta → autoevaluación (lo sabía / no lo sabía).
+    function renderCard(view, state) {
+      const item = state.queue[state.index];
+      const { ex, group } = item;
+      const isRetry = !!item.retry;
+      const reverse = cfg.cardDirection && cfg.cardDirection() === 'es-en';
+      let revealed = false;
+      let graded = false;
+
+      const top = h('div', { class: 'session-top' },
+        h('button', { class: 'btn ghost', onclick: exitSession }, icon('back'), 'Salir'),
+        progressBar(state.index / state.queue.length),
+        h('div', { class: 'session-count' }, `${state.index + 1} / ${state.queue.length}`));
+
+      const front = reverse
+        ? h('div', { class: 'card-front' }, h('div', { class: 'card-term es' }, ex.meaning), h('div', { class: 'muted small' }, '¿Cómo se dice en inglés?'))
+        : h('div', { class: 'card-front' }, h('div', { class: 'card-term en' }, ex.term));
+      const back = h('div', { class: 'card-back', hidden: true },
+        reverse ? h('div', { class: 'card-answer en' }, ex.term) : h('div', { class: 'card-answer' }, ex.meaning),
+        h('div', { class: 'card-def en' }, ex.definition),
+        h('div', { class: 'card-example en' }, ex.example),
+        ex.note ? h('div', { class: 'card-note' }, ex.note) : null);
+      const actions = h('div', { class: 'actions center' });
+
+      const showBtn = h('button', { class: 'btn primary large', onclick: reveal }, 'Mostrar respuesta', h('span', { class: 'kbd' }, 'espacio'));
+      actions.append(showBtn);
+
+      view.replaceChildren(h('div', { class: 'page narrow' }, top,
+        h('div', { class: 'question-card flashcard' },
+          h('div', { class: 'question-meta' },
+            h('span', { class: 'chip accent' }, group.title),
+            isRetry ? h('span', { class: 'chip due' }, 'Segundo intento') : null,
+            h('span', { class: 'instruction' }, 'Intentá recordarlo antes de mirar')),
+          front, back, actions)));
+
+      function reveal() {
+        if (revealed) return;
+        revealed = true;
+        back.hidden = false;
+        actions.replaceChildren(
+          h('button', { class: 'btn large grade-bad', onclick: () => grade(false) }, icon('x'), 'No lo sabía', h('span', { class: 'kbd' }, '1')),
+          h('button', { class: 'btn large grade-good', onclick: () => grade(true) }, icon('check'), 'Lo sabía', h('span', { class: 'kbd' }, '2')));
+      }
+
+      function grade(correct) {
+        if (graded) return;
+        graded = true;
+        Store.record({ module: MODULE, key: item.key, correct, tag: tagOf(group), srs: !isRetry });
+        state.results.push({ item, correct });
+        if (!correct && !isRetry && !state.retried.has(item.key)) {
+          state.retried.add(item.key);
+          state.queue.push({ ...item, retry: true });
+        }
+        state.index++;
+        if (state.index >= state.queue.length) renderSummary(view, state);
+        else renderQuestion(view, state);
+      }
+
+      state.onKey = (e) => {
+        if (e.metaKey || e.ctrlKey) return;
+        if (e.key === 'Escape') { exitSession(); return; }
+        if (!revealed && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); reveal(); return; }
+        if (revealed && e.key === '1') { e.preventDefault(); grade(false); }
+        if (revealed && e.key === '2') { e.preventDefault(); grade(true); }
+      };
+    }
+
     function feedback(group, ex, correct, correctText, isRetry, key) {
       const s = Store.srsState(key);
       const days = s ? diffDays(Store.today(), s.due) : null;
@@ -327,7 +406,7 @@
           h('button', { class: 'btn', onclick: () => App.go(MODULE) }, `Volver a ${cfg.title}`),
           h('button', { class: 'btn', onclick: () => App.go('dashboard') }, 'Inicio'),
           again)));
-      const onKey = (e) => { if (e.key === 'Enter') { window.removeEventListener('keydown', onKey); again.click(); } };
+      const onKey = (e) => { if (e.key === 'Enter') { e.preventDefault(); window.removeEventListener('keydown', onKey); again.click(); } };
       window.addEventListener('keydown', onKey);
       sessionCleanup = () => { window.removeEventListener('keydown', onKey); sessionCleanup = null; };
     }
@@ -344,6 +423,8 @@
       },
       load,
       progress,
+      // Temas de este módulo con su etiqueta de estadísticas (para la pantalla de Progreso).
+      tags: async () => (await load()).groups.map((group) => ({ tag: tagOf(group), group, moduleId: MODULE })),
       dueCount: async () => dueCount((await load()).items),
       dueTomorrow: async () => dueOn((await load()).items, addDays(Store.today(), 1)),
     };

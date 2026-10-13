@@ -1,0 +1,66 @@
+{
+  "_info": "Vocabulario en flashcards. Cada mazo tiene sus tarjetas: 'term' (inglés), 'meaning' (español), 'definition' (inglés simple), 'example' (frase de ejemplo) y opcionalmente 'note'. Los 'id' de tarjetas deben ser únicos.",
+  "decks": [
+    {
+      "id": "business",
+      "title": "Negocios y agenda",
+      "description": "El idioma de los calendarios, las reuniones y los pendientes. Clave para asistente ejecutiva.",
+      "cards": [
+        { "id": "voc-biz-01", "term": "block time", "meaning": "reservar un espacio en el calendario", "definition": "to reserve time in a calendar for a specific task", "example": "I'll block time on Friday morning for you to review the board deck.", "note": "También: «Can you block 30 minutes for me?»" },
+        { "id": "voc-biz-02", "term": "push a meeting", "meaning": "pasar una reunión para más tarde", "definition": "to move a meeting to a later time or date", "example": "Can we push our 2 p.m. to Thursday?", "note": "Lo contrario: «pull it forward» / «move it up» (adelantarla)." },
+        { "id": "voc-biz-03", "term": "double-booked", "meaning": "con dos compromisos a la misma hora", "definition": "having two appointments at the same time", "example": "Mr. Lee is double-booked at 10, so I moved the vendor call to 11." },
+        { "id": "voc-biz-04", "term": "back-to-back", "meaning": "reuniones seguidas, sin pausa", "definition": "one right after another, with no break", "example": "She has back-to-back meetings until 4, so let's send her a summary instead." },
+        { "id": "voc-biz-05", "term": "a hard stop", "meaning": "una hora de salida que no se puede pasar", "definition": "a fixed time when you must leave a meeting", "example": "Just a heads-up: I have a hard stop at 3." },
+        { "id": "voc-biz-06", "term": "placeholder", "meaning": "reserva provisional en el calendario", "definition": "a tentative calendar entry that holds a time slot", "example": "I sent a placeholder for Tuesday at 9 until the client confirms." },
+        { "id": "voc-biz-07", "term": "quick sync", "meaning": "reunión corta para ponerse al día", "definition": "a short meeting to align on status or next steps", "example": "Do you have 15 minutes for a quick sync before the client call?" },
+        { "id": "voc-biz-08", "term": "touch base", "meaning": "hablar brevemente para ponerse al día", "definition": "to briefly contact someone to check in", "example": "Let's touch base on Monday about the shipment schedule." },
+        { "id": "voc-biz-09", "term": "loop someone in", "meaning": "incluir a alguien en la conversación o el email", "definition": "to include someone in a conversation or email thread", "example": "I'll loop in Ana from Finance so she can approve the invoice." },
+        { "id": "voc-biz-10", "term": "circle back", "meaning": "retomar un tema más adelante", "definition": "to return to a topic later", "example": "Let's circle back on the budget once we have the supplier's quote." },
+        { "id": "voc-biz-11", "term": "flag it", "meaning": "señalarlo, avisar de un posible problema", "definition": "to point out an issue so others notice it", "example": "If the customs broker needs more documents, just flag it and I'll follow up." },
+        { "id": "voc-biz-12", "term": "bandwidth", "meaning": "capacidad o tiempo disponible", "definition": "the time or energy someone has available to take on work", "example": "Do you have the bandwidth to help with the travel arrangements this week?" },
+        { "id": "voc-biz-13", "term": "take it off your plate", "meaning": "quitarte esa tarea de encima, encargarme yo", "definition": "to take responsibility for a task so someone else doesn't have to", "example": "I can take the expense reports off your plate so you can focus on the proposal.", "note": "«plate» = lo que tenés en tu plato, tus pendientes." },
+        { "id": "voc-biz-14", "term": "run point on", "meaning": "liderar o coordinar algo", "definition": "to be the main person responsible for coordinating something", "example": "I'll run point on the offsite logistics: venue, travel and catering." },
+        { "id": "voc-biz-15", "term": "EOD", "meaning": "al final del día (end of day)", "definition": "end of day — by the end of the working day", "example": "I'll send you the updated tracker by EOD." },
+        { "id": "voc-biz-16", "term": "EOW", "meaning": "al final de la semana (end of week)", "definition": "end of week — usually by Friday", "example": "Can we have the final numbers by EOW?" },
+        { "id": "voc-biz-17", "term": "OOO", "meaning": "fuera de la oficina (out of office)", "definition": "out of office — on vacation, sick or away", "example": "I'll be OOO on Monday, but Carlos can help with anything urgent." },
+        { "id": "voc-biz-18", "term": "COB", "meaning": "al cierre de la jornada (close of business)", "definition": "close of business — the end of the official working day", "example": "The supplier needs the signed PO by COB today.", "note": "Ojo con husos horarios: aclará «COB Madrid time» o «COB Eastern»." }
+      ]
+    },
+    {
+      "id": "achievement",
+      "title": "Verbos de logro",
+      "description": "Los verbos que muestran lo que VOS hiciste. Para tu CV, LinkedIn y respuestas STAR.",
+      "cards": [
+        { "id": "voc-ach-01", "term": "supported", "meaning": "apoyé, di soporte a", "definition": "helped someone do their work or reach a goal", "example": "I supported three regional managers with scheduling and travel." },
+        { "id": "voc-ach-02", "term": "handled", "meaning": "manejé, me encargué de", "definition": "dealt with something successfully", "example": "I handled 60 to 80 calls a day from US customers on loan accounts." },
+        { "id": "voc-ach-03", "term": "managed", "meaning": "gestioné, administré", "definition": "was in charge of something and made it work", "example": "I managed purchase orders with suppliers in five countries." },
+        { "id": "voc-ach-04", "term": "liaised with", "meaning": "hice de enlace con, coordiné con", "definition": "worked as the connection between two people or groups", "example": "I liaised with customs brokers and the warehouse to clear shipments on time.", "note": "Se pronuncia /liˈeɪzd/. Muy valorado en roles de asistente y logística." },
+        { "id": "voc-ach-05", "term": "coordinated", "meaning": "coordiné", "definition": "organized people or tasks so they work together", "example": "I coordinated deliveries from Japan and Germany for the same week." },
+        { "id": "voc-ach-06", "term": "resolved", "meaning": "resolví", "definition": "found a solution to a problem", "example": "I resolved billing disputes on the first call in most cases." },
+        { "id": "voc-ach-07", "term": "reviewed", "meaning": "revisé", "definition": "checked something carefully to make sure it was correct", "example": "I reviewed every commercial invoice before it went to customs." },
+        { "id": "voc-ach-08", "term": "verified", "meaning": "verifiqué", "definition": "confirmed that information was accurate", "example": "I verified HS codes and quantities in TICA before submitting the declaration." },
+        { "id": "voc-ach-09", "term": "streamlined", "meaning": "simplifiqué, optimicé", "definition": "made a process simpler and more efficient", "example": "I streamlined the import checklist, which cut documentation errors." },
+        { "id": "voc-ach-10", "term": "oversaw", "meaning": "supervisé", "definition": "watched over and directed work (past of oversee)", "example": "I oversaw the onboarding of two new agents on the healthcare account.", "note": "Irregular: oversee → oversaw → overseen." },
+        { "id": "voc-ach-11", "term": "took ownership of", "meaning": "me hice cargo de, asumí como propio", "definition": "took full responsibility for something", "example": "I took ownership of the escalated cases and followed each one until it closed." },
+        { "id": "voc-ach-12", "term": "delivered", "meaning": "entregué, logré (un resultado)", "definition": "produced or achieved what was expected", "example": "I delivered the monthly import report on time every month." }
+      ]
+    },
+    {
+      "id": "social",
+      "title": "Social y small talk",
+      "description": "Frases cortas que te hacen sonar natural en el pasillo, en Slack y antes de una reunión.",
+      "cards": [
+        { "id": "voc-soc-01", "term": "How's it going?", "meaning": "¿Qué tal? ¿Cómo va todo?", "definition": "a casual way to say hello and ask how someone is", "example": "Hey Sarah, how's it going? — Good, busy week! You?", "note": "No espera una respuesta larga: «Good, thanks! You?» alcanza." },
+        { "id": "voc-soc-02", "term": "Any plans for the weekend?", "meaning": "¿Tenés planes para el fin de semana?", "definition": "a common Friday small-talk question", "example": "Any plans for the weekend? — Just relaxing. Maybe a trip to the beach." },
+        { "id": "voc-soc-03", "term": "That makes sense", "meaning": "Tiene sentido / Entiendo", "definition": "I understand and agree with your reasoning", "example": "So we push the meeting until the quote arrives? — That makes sense." },
+        { "id": "voc-soc-04", "term": "Fair enough", "meaning": "Me parece justo / Está bien", "definition": "I accept your point, even if I didn't think of it first", "example": "We can't approve it until Finance signs off. — Fair enough." },
+        { "id": "voc-soc-05", "term": "No worries", "meaning": "No te preocupes / Tranqui", "definition": "it's fine; no problem", "example": "Sorry I'm a few minutes late! — No worries, we just started." },
+        { "id": "voc-soc-06", "term": "I'm swamped", "meaning": "Estoy hasta el cuello (de trabajo)", "definition": "I'm extremely busy", "example": "I'm swamped today — can we touch base tomorrow morning?" },
+        { "id": "voc-soc-07", "term": "It slipped my mind", "meaning": "Se me olvidó / Se me pasó", "definition": "I forgot (in a polite, natural way)", "example": "Sorry, it slipped my mind — I'll send the agenda right now." },
+        { "id": "voc-soc-08", "term": "My bad", "meaning": "Mi culpa / Error mío", "definition": "an informal way to admit a small mistake", "example": "My bad, I sent you the old version. Here's the right one.", "note": "Informal: entre colegas sí, con un cliente o un VP mejor «My mistake»." },
+        { "id": "voc-soc-09", "term": "Off the top of my head", "meaning": "Así de memoria / Sin revisarlo", "definition": "from memory, without checking", "example": "Off the top of my head, I think the container arrives on the 14th — let me confirm." },
+        { "id": "voc-soc-10", "term": "I'm on it", "meaning": "Ya me encargo / En eso estoy", "definition": "I'm taking care of it right now", "example": "The client needs the contract signed today. — I'm on it." }
+      ]
+    }
+  ]
+}

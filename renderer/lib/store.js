@@ -8,6 +8,7 @@
     days: {},      // { 'YYYY-MM-DD': { total, correct, modules: {id:{total,correct}}, tags: {id:{total,wrong}} } }
     srs: {},       // { 'modulo:itemId': { box, due, reps, lapses, last, lastCorrect } }
     tagStats: {},  // acumulado histórico por error/etiqueta: { id: { total, wrong } }
+    settings: {},  // preferencias (p. ej. dirección de las flashcards)
   });
 
   let data = EMPTY();
@@ -51,6 +52,12 @@
       if (srs && key) data.srs[key] = review(data.srs[key], correct, t);
       scheduleSave();
       emit();
+    },
+
+    setting(name, fallback) { return (data.settings || {})[name] ?? fallback; },
+    setSetting(name, value) {
+      (data.settings ||= {})[name] = value;
+      scheduleSave();
     },
 
     srsState(key) { return data.srs[key]; },

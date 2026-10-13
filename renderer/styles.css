@@ -392,3 +392,73 @@ p { margin: 0 0 10px; }
   color: var(--text);
 }
 .due-list { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+
+/* ---------- Fase 3: flashcards ---------- */
+.flashcard { text-align: center; min-height: 340px; display: flex; flex-direction: column; }
+.flashcard .question-meta { justify-content: center; }
+.card-front { padding: 28px 0 18px; }
+.card-term { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; user-select: text; }
+.card-term.es { font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+.card-back { border-top: 1px solid var(--border); padding: 20px 10px 6px; user-select: text; }
+.card-answer { font-size: 20px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+.card-def { color: var(--text-2); margin-bottom: 14px; }
+.card-example { font-style: italic; font-size: 15px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; display: inline-block; max-width: 520px; }
+.card-note { font-size: 12.5px; color: var(--text-2); margin-top: 12px; }
+.actions.center { justify-content: center; margin-top: auto; padding-top: 22px; }
+.btn.grade-bad { color: var(--bad); }
+.btn.grade-good { color: var(--good); }
+
+.segmented { display: inline-flex; background: var(--surface-2); border-radius: var(--radius-sm); padding: 2px; gap: 2px; }
+.segmented button { font: inherit; font-size: 12.5px; border: 0; background: none; color: var(--text-2); padding: 4px 12px; border-radius: 5px; cursor: default; }
+.segmented button.on { background: var(--raised); color: var(--text); box-shadow: var(--shadow); font-weight: 500; }
+.home-extra { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 13px; color: var(--text-2); }
+
+/* ---------- Fase 3: progreso ---------- */
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.chart-card { padding: 16px 18px 12px; }
+.chart-wrap { position: relative; }
+.chart { width: 100%; height: auto; display: block; overflow: visible; }
+.chart .grid { stroke: var(--border); stroke-width: 1; }
+.chart .axis { stroke: var(--border-strong); stroke-width: 1; }
+.chart .tick { fill: var(--text-3); font-size: 10.5px; font-family: var(--font); font-variant-numeric: tabular-nums; }
+.chart .bar-mark { fill: var(--accent); }
+.chart .hit { fill: transparent; }
+.chart .hl { fill: var(--nav-active); }
+.chart-tip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 10px));
+  background: var(--raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 3;
+}
+.tip-date { font-weight: 600; }
+.tip-date::first-letter { text-transform: uppercase; }
+.table-view { margin-top: 8px; font-size: 12.5px; }
+.table-view summary { color: var(--accent); cursor: default; }
+.table-view table { margin-top: 8px; border-collapse: collapse; width: 100%; max-width: 420px; }
+.table-view th, .table-view td { text-align: left; padding: 4px 10px 4px 0; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+.table-view th { color: var(--text-2); font-weight: 600; }
+
+.acc-row { display: grid; grid-template-columns: 22px 170px 1fr 48px 110px; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.acc-row:last-child { border-bottom: 0; }
+.acc-row .icon { color: var(--accent); }
+.acc-pct { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.acc-n { font-size: 12px; color: var(--text-2); }
+.linklike { all: unset; cursor: default; }
+.linklike:hover { text-decoration: underline; }
+
+.failing { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: fail; }
+.failing-item { display: flex; gap: 16px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; counter-increment: fail; }
+.failing-item::before { content: counter(fail); font-weight: 700; color: var(--text-3); font-variant-numeric: tabular-nums; width: 18px; }
+.failing-main { flex: 1; min-width: 0; }
+.failing-side { text-align: right; flex-shrink: 0; }
+.failing-count { font-weight: 600; color: var(--bad); }

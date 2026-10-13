@@ -68,6 +68,18 @@
     return count;
   }
 
+  // Racha más larga de toda la historia.
+  function longestStreak(days) {
+    const keys = Object.keys(days).filter((k) => days[k] && days[k].total > 0).sort();
+    let best = 0, run = 0, prev = null;
+    for (const k of keys) {
+      run = prev && addDays(prev, 1) === k ? run + 1 : 1;
+      best = Math.max(best, run);
+      prev = k;
+    }
+    return best;
+  }
+
   // ---------- Respuestas escritas ----------
   function normalize(text) {
     return String(text || '')
@@ -109,6 +121,6 @@
   return {
     dayKey, parseDay, addDays, diffDays,
     INTERVALS, MASTERED_BOX, review, isDue, isMastered,
-    streak, normalize, checkAnswer, shuffle, isoWeek,
+    streak, longestStreak, normalize, checkAnswer, shuffle, isoWeek,
   };
 });

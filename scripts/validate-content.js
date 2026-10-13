@@ -95,6 +95,21 @@ function validate(dir = DIR) {
     summary.push(`collocations.json: ${groups.size} grupos, ${seen.size} colocaciones`);
   }
 
+  // vocab.json
+  const voc = readJSON('vocab.json');
+  if (voc) {
+    const seen = new Set();
+    const decks = voc.decks || [];
+    for (const deck of decks) {
+      for (const f of ['id', 'title', 'description']) if (!deck[f]) warn('vocab.json', `mazo "${deck.id || '?'}": falta "${f}"`);
+      for (const c of deck.cards || []) {
+        checkId('vocab.json', c.id, seen, `mazo ${deck.id}`);
+        for (const f of ['term', 'meaning', 'definition', 'example']) if (!c[f]) warn('vocab.json', `${c.id}: falta "${f}"`);
+      }
+    }
+    summary.push(`vocab.json: ${decks.length} mazos, ${seen.size} tarjetas`);
+  }
+
   return { problems, summary };
 }
 

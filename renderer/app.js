@@ -42,6 +42,7 @@
       if (typeof cleanup === 'function') cleanup();
       cleanup = null;
       current = id;
+      if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
       renderNav();
       const view = document.getElementById('view');
       view.replaceChildren();

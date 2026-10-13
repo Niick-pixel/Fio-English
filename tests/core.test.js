@@ -39,6 +39,12 @@ test('racha cuenta días consecutivos y tolera que hoy aún no haya práctica', 
   assert.strictEqual(Core.streak(days, '2026-10-11'), 0);
 });
 
+test('racha más larga', () => {
+  const days = { '2026-10-01': { total: 1 }, '2026-10-02': { total: 4 }, '2026-10-03': { total: 2 }, '2026-10-05': { total: 1 }, '2026-10-06': { total: 0 } };
+  assert.strictEqual(Core.longestStreak(days), 3);
+  assert.strictEqual(Core.longestStreak({}), 0);
+});
+
 test('respuestas escritas: mayúsculas, puntuación y apóstrofos', () => {
   const ex = { type: 'fill', answers: ['interested'] };
   assert.ok(Core.checkAnswer(ex, '  Interested. '));

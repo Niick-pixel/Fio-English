@@ -19,7 +19,7 @@ como BCG, logística y comercio exterior).
 |---|---|---|
 | 1 | Esqueleto, navegación, Dashboard, **Error Killer** | ✅ Lista |
 | 2 | Tiempos verbales, Registro (call center → oficina), Colocaciones | ✅ Lista |
-| 3 | Vocabulario con repetición espaciada, Progreso | Pendiente |
+| 3 | Vocabulario con repetición espaciada, Progreso | ✅ Lista |
 | 4 | Constructor STAR, Simulador de entrevista | Pendiente |
 | 5 | Husos horarios, empaquetado del `.app` | Pendiente |
 
@@ -191,6 +191,25 @@ Los `groups` son los verbos (`make`, `do`, `take`, `pay`, `gain`, `other`). Cada
   **Ojo:** si alguno de esos verbos también sería correcto (por ejemplo *take a course* y
   *do a course*), poné `"options"` a mano con solo una respuesta válida.
 
+### `content/vocab.json` — Vocabulario (flashcards)
+
+Tres mazos (`business`, `achievement`, `social`). Cada tarjeta:
+
+```json
+{
+  "id": "voc-biz-19",
+  "term": "heads-up",
+  "meaning": "aviso previo",
+  "definition": "advance warning about something",
+  "example": "Just a heads-up: the CEO lands at 6, not 4.",
+  "note": "Opcional: un tip de uso o pronunciación."
+}
+```
+
+En la pantalla de Vocabulario podés elegir la dirección: **inglés → español** (reconocer) o
+**español → inglés** (producir, más difícil y más útil para hablar). Al ver la respuesta te
+autoevaluás: `1` = no lo sabía, `2` = lo sabía. Espacio muestra la respuesta.
+
 ## Cómo funciona la repetición espaciada
 
 | Resultado | Vuelve a aparecer en |
@@ -200,11 +219,20 @@ Los `groups` son los verbos (`make`, `do`, `take`, `pay`, `gain`, `other`). Cada
 | 2.º acierto | 7 días → ya cuenta como **dominado** |
 | 3.er acierto y siguientes | 21 días |
 
-Si fallás un ejercicio dominado, vuelve a empezar desde 1 día. Cada sesión toma primero los
+Si fallás un ejercicio dominado, vuelve a empezar desde 1 día. Cuando ya viste todo y no hay
+nada pendiente, el botón cambia a **Practicar igual**: arma una sesión con lo que tenés menos firme. Cada sesión toma primero los
 pendientes de hoy y completa hasta 15 con ejercicios nuevos, priorizando los errores que más fallás.
 
 El **error de la semana** del Dashboard es el que más fallaste en los últimos 7 días (si no
 fallaste ninguno, rota uno distinto cada semana).
+
+## Pantalla de Progreso
+
+- **Ejercicios por día** (14, 30 o 90 días): pasá el mouse sobre una barra para ver el detalle, o
+  abrí *Ver como tabla*.
+- **Acierto por módulo**: histórico, con cuántas respuestas diste en cada uno.
+- **Errores que todavía fallo**: los temas de todos los módulos con fallos en los últimos 30 días,
+  del más fallado al menos fallado, cada uno con su regla y un botón para practicarlo.
 
 ## Estructura del proyecto
 
