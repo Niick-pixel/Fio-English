@@ -38,16 +38,58 @@ como BCG, logística y comercio exterior).
 | 4 | Constructor STAR, Simulador de entrevista | ✅ Lista |
 | 5 | Husos horarios, empaquetado del `.app` | ✅ Lista |
 
-## Cómo correr la app
+## Cómo instalar la app (recomendado)
 
-Necesitás [Node.js](https://nodejs.org) 20 o superior (recomendado: la versión LTS).
+No hace falta instalar Node ni compilar nada: GitHub compila la app en una Mac cada vez que se
+actualiza `main` y la publica en [Releases](https://github.com/Niick-pixel/Fio-English/releases).
+
+### Opción A — Una línea en Terminal (la más fácil)
+
+1. Abrí **Terminal** (⌘ + espacio, escribí «Terminal», Enter).
+2. Pegá esto y apretá Enter:
+
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/Niick-pixel/Fio-English/main/install.sh | bash
+   ```
+
+El script detecta si tu Mac es Apple Silicon o Intel, descarga la versión correcta, la copia a
+**Aplicaciones** y la abre. Como se descarga desde Terminal y no desde el navegador, macOS no
+muestra el aviso de «no se puede verificar el desarrollador». Para **actualizar**, corré la misma
+línea otra vez: tu progreso no se toca.
+
+### Opción B — Descargar el `.dmg`
+
+1. Entrá a [Releases](https://github.com/Niick-pixel/Fio-English/releases) y descargá:
+   - `English-Coach-…-arm64.dmg` si tu Mac tiene chip **M1, M2, M3 o M4** ( → *Acerca de esta Mac*
+     dice «Chip Apple…»).
+   - `English-Coach-…-x64.dmg` si dice **Intel**.
+2. Abrí el `.dmg` y arrastrá **English Coach** a **Aplicaciones**.
+3. La primera vez macOS la bloquea porque no está firmada con un certificado pago de Apple:
+   - **macOS 15 Sequoia o más nuevo:** abrila una vez (aparece el aviso, tocá *Listo*). Andá a
+     *Ajustes del Sistema → Privacidad y seguridad*, bajá hasta el final y tocá **Abrir igualmente**
+     junto a «English Coach». Confirmá con tu contraseña.
+   - **macOS 14 o anterior:** clic derecho sobre la app → *Abrir* → *Abrir*.
+4. Si dice que la app «está dañada», abrí Terminal y corré:
+
+   ```bash
+   xattr -cr "/Applications/English Coach.app"
+   ```
+
+### Micrófono
+
+En el Simulador, la primera vez que tocás **Grabar** macOS pide permiso para el micrófono: aceptá.
+Si lo negaste: *Ajustes del Sistema → Privacidad y seguridad → Micrófono* → activá English Coach.
+
+## Correrla desde el código (para modificarla)
+
+Necesitás [Node.js](https://nodejs.org) 20 o superior (la versión LTS).
 
 ```bash
 npm install
 npm start
 ```
 
-Se abre la ventana de **English Coach**. Atajos útiles:
+Atajos útiles:
 
 | Atajo | Acción |
 |---|---|
@@ -56,41 +98,27 @@ Se abre la ventana de **English Coach**. Atajos útiles:
 | `↵` (Enter) | Comprobar / Continuar / Empezar sesión |
 | `Esc` | Salir de la sesión |
 
-## Cómo generar el `.app` de macOS
+## Generar el `.app` en tu Mac (opcional)
+
+Normalmente no hace falta (GitHub lo hace solo, ver arriba). Si querés compilarla vos:
 
 ```bash
-npm install        # solo la primera vez
-npm run dist       # crea dist/English Coach-1.0.0-arm64.dmg y el .zip (Apple Silicon)
+npm install
+npm run dist       # crea dist/English-Coach-<versión>-arm64.dmg y -x64.dmg (+ .zip)
 npm run dist:dir   # solo la carpeta con el .app, sin instalador (más rápido)
 ```
 
-El ícono sale de `build/icon.png` (1024×1024); electron-builder lo convierte solo a `.icns`. Si
-querés regenerarlo: `npm run icon` (necesita Python con Pillow).
+Hay que correrlo **en una Mac**. Durante el build vas a ver `firma ad-hoc aplicada`: es una firma
+local gratuita (`scripts/after-pack.js`) sin la cual las Mac con Apple Silicon dicen que la app
+«está dañada». El ícono sale de `build/icon.png` (`npm run icon` lo regenera; necesita Python con
+Pillow).
 
-Hay que correrlo **en una Mac** (desde Linux o Windows el paquete sale roto: no se puede firmar y
-el `.zip` pierde los enlaces internos del framework). El resultado queda en `dist/`; para instalar,
-abrí el `.dmg` y arrastrá **English Coach** a *Aplicaciones*.
+### Cómo se publica una versión nueva
 
-Durante el build vas a ver `firma ad-hoc aplicada`: es una firma local gratuita
-(`scripts/after-pack.js`) sin la cual los Mac con Apple Silicon dicen que la app "está dañada".
-Como no es un certificado de Apple, la primera vez macOS la bloquea igual: hacé **clic derecho →
-Abrir → Abrir** (o en *Ajustes del Sistema → Privacidad y seguridad → Abrir igualmente*). Solo hace
-falta una vez.
-
-**Primera vez en tu Mac, checklist rápido:**
-
-1. `npm run dist` termina mostrando `firma ad-hoc aplicada`.
-2. Abrí `dist/English Coach-1.0.0-arm64.dmg` y arrastrá la app a *Aplicaciones*.
-3. Clic derecho sobre la app → *Abrir* → *Abrir*.
-4. En el Simulador, el primer «Grabar» pide permiso de micrófono: aceptá.
-
-Si aun así macOS dice que la app "está dañada" (pasa a veces con apps descargadas o copiadas por
-AirDrop), quitale la marca de cuarentena y volvé a firmarla:
-
-```bash
-xattr -cr "/Applications/English Coach.app"
-codesign --force --deep --sign - "/Applications/English Coach.app"
-```
+El flujo [`.github/workflows/build-mac.yml`](.github/workflows/build-mac.yml) corre en cada push:
+tests, compilación para Apple Silicon e Intel, verificación de la firma y una prueba de que la app
+abre. En `main`, además crea o actualiza el Release `v<versión>` de `package.json`. Para publicar
+una versión nueva: subí `version` en `package.json` y hacé push a `main`.
 
 ## Dónde se guarda mi progreso
 
