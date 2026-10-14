@@ -1,0 +1,19 @@
+{
+  "_info": "Constructor STAR: guía de cada caja y una historia de ejemplo. Podés cambiar los textos de ayuda o el ejemplo.",
+  "targetStories": 6,
+  "sections": {
+    "s": { "title": "Situation", "es": "Situación", "help": "El contexto en 2–3 frases: dónde, cuándo, qué estaba pasando. Acá sí puede ir «our team».", "placeholder": "During my internship at Veinsa Motors, our import team was processing about 20 purchase orders a month from suppliers in Japan and Germany…" },
+    "t": { "title": "Task", "es": "Tarea", "help": "Tu responsabilidad concreta en esa situación. Una o dos frases.", "placeholder": "I was responsible for preparing the customs documents in TICA and making sure every shipment cleared on time." },
+    "a": { "title": "Action", "es": "Acción", "help": "Lo que hiciste VOS, paso a paso, con «I» y verbos de logro. Es la parte más larga.", "placeholder": "First, I reviewed the last three months of rejections… Then I created a checklist… After that, I shared it with…" },
+    "r": { "title": "Result", "es": "Resultado", "help": "Qué pasó gracias a lo que hiciste: un número, un plazo, un reconocimiento. Podés cerrar con lo que aprendiste.", "placeholder": "As a result, documentation errors dropped by about 30% in two months, and my manager asked me to train the new intern with the checklist." }
+  },
+  "achievementVerbs": ["supported", "handled", "managed", "liaised with", "coordinated", "resolved", "reviewed", "verified", "streamlined", "oversaw", "took ownership of", "delivered", "created", "noticed", "proposed", "trained"],
+  "example": {
+    "title": "Checklist de importación (ejemplo)",
+    "questionId": "q-beh-03",
+    "s": "During my internship at Veinsa Motors, our import team handled purchase orders from suppliers in Japan, Germany, France and the US. Several shipments were held at customs because of small mistakes in the documentation, and each delay cost us days.",
+    "t": "I was responsible for preparing and verifying the customs documents in TICA before each shipment arrived.",
+    "a": "First, I reviewed the shipments that had been held in the previous three months and noticed that most of the problems came from the same four fields: HS codes, quantities, invoice values and the supplier's address. Then I created a one-page checklist and started using it for every order. After that, I shared it with my manager and the customs broker so everyone was checking the same things before each shipment.",
+    "r": "As a result, we had no shipments held for documentation errors in the next two months, and my manager asked me to train the new intern with the checklist. Now I always build a simple checklist when a process keeps failing in the same place."
+  }
+}

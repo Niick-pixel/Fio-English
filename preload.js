@@ -7,5 +7,9 @@ contextBridge.exposeInMainWorld('api', {
   loadContent: (name) => ipcRenderer.invoke('content:load', name),
   paths: () => ipcRenderer.invoke('app:paths'),
   openPath: (which) => ipcRenderer.invoke('app:openPath', which),
+  saveRecording: (id, bytes) => ipcRenderer.invoke('recordings:save', id, bytes),
+  loadRecording: (id) => ipcRenderer.invoke('recordings:load', id),
+  deleteRecording: (id) => ipcRenderer.invoke('recordings:delete', id),
+  askMic: () => ipcRenderer.invoke('media:askMic'),
   platform: process.platform,
 });

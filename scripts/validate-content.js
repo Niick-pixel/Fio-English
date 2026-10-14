@@ -110,6 +110,23 @@ function validate(dir = DIR) {
     summary.push(`vocab.json: ${decks.length} mazos, ${seen.size} tarjetas`);
   }
 
+  // interview.json
+  const iv = readJSON('interview.json');
+  if (iv) {
+    const cats = new Set((iv.categories || []).map((c) => c.id));
+    for (const c of iv.categories || []) if (!Array.isArray(c.checklist) || !c.checklist.length) warn('interview.json', `categoría "${c.id}": falta "checklist"`);
+    const seen = new Set();
+    for (const q of iv.questions || []) {
+      checkId('interview.json', q.id, seen, 'pregunta');
+      if (!cats.has(q.category)) warn('interview.json', `${q.id}: la categoría "${q.category}" no existe`);
+      if (!q.text) warn('interview.json', `${q.id}: falta "text"`);
+    }
+    summary.push(`interview.json: ${cats.size} categorías, ${seen.size} preguntas`);
+    const st = readJSON('star.json');
+    if (st && st.example && st.example.questionId && !seen.has(st.example.questionId)) warn('star.json', `el ejemplo apunta a una pregunta que no existe: ${st.example.questionId}`);
+    if (st) for (const k of ['s', 't', 'a', 'r']) if (!st.sections || !st.sections[k]) warn('star.json', `falta la sección "${k}"`);
+  }
+
   return { problems, summary };
 }
 

@@ -1,5 +1,5 @@
 // Proceso principal de Electron: ventana, almacenamiento local (JSON) y carga de contenido.
-const { app, BrowserWindow, ipcMain, nativeTheme, shell } = require('electron');
+const { app, BrowserWindow, ipcMain, nativeTheme, shell, session, systemPreferences } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
@@ -49,6 +49,38 @@ ipcMain.handle('content:load', (_e, name) => {
   }
 });
 
+// ---------- Grabaciones del simulador de entrevista ----------
+function recordingsDir() {
+  return path.join(app.getPath('userData'), 'recordings');
+}
+function recordingFile(id) {
+  if (!/^[a-z0-9-]+$/i.test(id)) throw new Error('Id de grabación inválido');
+  return path.join(recordingsDir(), id + '.webm');
+}
+ipcMain.handle('recordings:save', (_e, id, bytes) => {
+  fs.mkdirSync(recordingsDir(), { recursive: true });
+  fs.writeFileSync(recordingFile(id), Buffer.from(bytes));
+  return true;
+});
+ipcMain.handle('recordings:load', (_e, id) => {
+  try {
+    return new Uint8Array(fs.readFileSync(recordingFile(id)));
+  } catch {
+    return null;
+  }
+});
+ipcMain.handle('recordings:delete', (_e, id) => {
+  fs.rmSync(recordingFile(id), { force: true });
+  return true;
+});
+
+// En macOS hay que pedir permiso de micrófono al sistema (usa NSMicrophoneUsageDescription).
+ipcMain.handle('media:askMic', async () => {
+  if (process.platform !== 'darwin') return true;
+  if (systemPreferences.getMediaAccessStatus('microphone') === 'granted') return true;
+  return systemPreferences.askForMediaAccess('microphone');
+});
+
 ipcMain.handle('app:paths', () => ({
   userData: app.getPath('userData'),
   content: contentDir(),
@@ -89,6 +121,12 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  // Solo se permite el micrófono (para grabar respuestas); cualquier otro permiso se niega.
+  session.defaultSession.setPermissionRequestHandler((_wc, permission, callback, details) => {
+    const audioOnly = permission === 'media' && (details.mediaTypes || []).every((t) => t === 'audio');
+    callback(audioOnly);
+  });
+  session.defaultSession.setPermissionCheckHandler((_wc, permission) => permission === 'media');
   createWindow();
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

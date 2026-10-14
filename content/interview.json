@@ -1,0 +1,63 @@
+{
+  "_info": "Simulador de entrevista. Cada pregunta: 'id' único, 'category' (id de una categoría), 'text' (en inglés) y 'tip' (qué buscan, en español). 'checklist' de cada categoría = la autoevaluación que aparece al terminar.",
+  "timeLimitSec": 90,
+  "connectors": ["First,", "Then,", "After that,", "Once…", "As a result,", "So,", "However,", "In the end,", "That's why…", "Because of that,"],
+  "categories": [
+    {
+      "id": "about-me",
+      "title": "Sobre mí",
+      "description": "Las preguntas de apertura. Cortas, seguras y conectadas con el puesto.",
+      "checklist": [
+        { "id": "first-person", "text": "¿Hablé en primera persona («I…») y con seguridad?" },
+        { "id": "concrete", "text": "¿Di al menos un logro concreto, idealmente con un número?" },
+        { "id": "connectors", "text": "¿Usé al menos 2 conectores (First, Then, That's why…)?" },
+        { "id": "tense", "text": "¿Usé bien los tiempos: pasado para trabajos anteriores, presente para hoy?" }
+      ]
+    },
+    {
+      "id": "behavioral",
+      "title": "Comportamiento",
+      "description": "«Tell me about a time…»: respondé con una historia STAR en pasado.",
+      "checklist": [
+        { "id": "used-i", "text": "¿Usé «I» para mis acciones (no «we»)?" },
+        { "id": "result", "text": "¿Di un resultado concreto (con número si se puede)?" },
+        { "id": "connectors", "text": "¿Usé al menos 2 conectores (First, Then, As a result…)?" },
+        { "id": "past", "text": "¿Mantuve el pasado de principio a fin?" }
+      ]
+    },
+    {
+      "id": "ea-situational",
+      "title": "Situacionales de asistente ejecutiva",
+      "description": "«What would you do if…?»: explicá tu criterio paso a paso con «I would…».",
+      "checklist": [
+        { "id": "would", "text": "¿Usé «I would…» de forma consistente?" },
+        { "id": "priority", "text": "¿Expliqué cómo decido qué es prioritario?" },
+        { "id": "communicate", "text": "¿Mencioné a quién aviso y cómo hago seguimiento?" },
+        { "id": "example", "text": "¿Di un ejemplo real de mi experiencia («In my previous role, I…»)?" }
+      ]
+    }
+  ],
+  "questions": [
+    { "id": "q-about-01", "category": "about-me", "text": "Tell me about yourself.", "tip": "Presente → pasado → futuro en 60–90 s. Quién sos hoy, dos experiencias clave con un logro cada una (Concentrix y Veinsa Motors) y por qué este puesto. No recites el CV." },
+    { "id": "q-about-02", "category": "about-me", "text": "Why are you interested in this position?", "tip": "Conectá 2 cosas del puesto con 2 cosas tuyas (organización, trato con clientes de EE. UU., coordinación internacional). Y recordá: I'm interestED." },
+    { "id": "q-about-03", "category": "about-me", "text": "What's your biggest weakness?", "tip": "Una debilidad real pero no crítica + lo que ya hiciste para mejorarla + el resultado. Ej.: después de años en call center, tu inglés sonaba guionado; empezaste a practicar inglés corporativo a diario." },
+    { "id": "q-about-04", "category": "about-me", "text": "Why did you leave your last job?", "tip": "Positivo y hacia adelante: buscabas crecer hacia coordinación, logística o apoyo ejecutivo. Nunca critiques al empleador anterior." },
+    { "id": "q-about-05", "category": "about-me", "text": "Where do you see yourself in three years?", "tip": "Crecimiento realista dentro de la empresa, ligado al puesto. «I'd like to…», «I see myself…», «I hope to…»." },
+    { "id": "q-about-06", "category": "about-me", "text": "Why should we hire you?", "tip": "Tres razones concretas: experiencia con clientes de EE. UU. bajo presión, coordinación con proveedores internacionales y manejo de sistemas (Salesforce, Oracle). Cerrá con entusiasmo." },
+    { "id": "q-about-07", "category": "about-me", "text": "Why do you want to work in consulting?", "tip": "Ritmo rápido, aprendizaje constante, trabajo con equipos internacionales. Mostrá que entendés que una asistente ejecutiva hace que los consultores rindan más." },
+
+    { "id": "q-beh-01", "category": "behavioral", "text": "Tell me about a time you dealt with a difficult customer.", "tip": "Historia de Concentrix. Situation breve, Action con «I listened to their needs…», Result con un dato (cliente retenido, caso resuelto en la primera llamada, encuesta positiva)." },
+    { "id": "q-beh-02", "category": "behavioral", "text": "Tell me about a time you made a mistake.", "tip": "Elegí un error real y menor. Lo importante es qué hiciste para corregirlo y qué cambiaste después (un checklist, una doble verificación). Todo en pasado; el aprendizaje puede ir en presente: «Now I always…»." },
+    { "id": "q-beh-03", "category": "behavioral", "text": "Tell me about a time you took initiative.", "tip": "Algo que mejoraste sin que te lo pidieran: un tracker, una guía para agentes nuevos, un checklist de importación. «I noticed… so I…». Cerrá con el impacto." },
+    { "id": "q-beh-04", "category": "behavioral", "text": "Tell me about a time you had to handle multiple priorities at once.", "tip": "Mostrá tu sistema: cómo ordenaste por urgencia e impacto, a quién avisaste y qué delegaste o reprogramaste. Ideal: varias órdenes de compra o envíos a la vez en Veinsa." },
+    { "id": "q-beh-05", "category": "behavioral", "text": "Tell me about a time you had to learn something quickly.", "tip": "Aprender TICA o un sistema nuevo, o pasar de la cuenta de préstamos a la de salud. Contá cómo aprendiste (preguntas, notas, práctica) y en cuánto tiempo." },
+    { "id": "q-beh-06", "category": "behavioral", "text": "Tell me about a time you worked with people from a different culture.", "tip": "Proveedores de China, Japón, Alemania, Francia y EE. UU.: diferencias de horario, de estilo de comunicación y de formalidad. Qué ajustaste vos y qué resultado tuvo." },
+
+    { "id": "q-ea-01", "category": "ea-situational", "text": "Your executive is double-booked at 10 a.m. tomorrow. What would you do?", "tip": "Averiguar cuál es prioritaria (impacto, quién la pidió, si es externa), consultar al ejecutivo si no está claro, reprogramar la otra con opciones concretas y confirmar a todos." },
+    { "id": "q-ea-02", "category": "ea-situational", "text": "An important client calls with an urgent request while your manager is in a meeting. How would you handle it?", "tip": "Escuchar y tomar los datos, evaluar la urgencia real, resolver lo que puedas vos, y decidir si interrumpir (una nota discreta) o dar al cliente un tiempo de respuesta concreto." },
+    { "id": "q-ea-03", "category": "ea-situational", "text": "You have five urgent tasks at the same time. How would you prioritize them?", "tip": "Un criterio claro (urgente vs. importante, plazos, quién depende de qué), avisar a quien corresponda si algo se va a atrasar y confirmar prioridades con tu jefe si hay duda." },
+    { "id": "q-ea-04", "category": "ea-situational", "text": "You come across confidential information, like salary data or a planned restructuring. What would you do?", "tip": "Discreción total: no compartirla, no comentarla, asegurar el documento, y si llegó por error, avisar a quien corresponda. Mencioná tu experiencia con datos sensibles en salud y banca." },
+    { "id": "q-ea-05", "category": "ea-situational", "text": "Your manager's meeting changes at the last minute, and several people need to know right away. What would you do?", "tip": "Actualizar el calendario, avisar por el canal más rápido (llamada o Slack) además del email, confirmar que cada persona lo vio y reorganizar lo que dependa de esa reunión." },
+    { "id": "q-ea-06", "category": "ea-situational", "text": "Your executive's flight is canceled the night before an important meeting in another city. What would you do?", "tip": "Buscar alternativas (otro vuelo, otra aerolínea, llegar por la mañana), proponer opciones claras en vez de solo dar la mala noticia, y preparar un plan B (reunión virtual)." }
+  ]
+}

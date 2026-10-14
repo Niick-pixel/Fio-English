@@ -9,6 +9,8 @@
     srs: {},       // { 'modulo:itemId': { box, due, reps, lapses, last, lastCorrect } }
     tagStats: {},  // acumulado histórico por error/etiqueta: { id: { total, wrong } }
     settings: {},  // preferencias (p. ej. dirección de las flashcards)
+    stories: [],   // historias STAR: { id, title, questionId, s, t, a, r, createdAt, updatedAt }
+    recordings: [],// simulador: { id, questionId, durationSec, checklist, createdAt }
   });
 
   let data = EMPTY();
@@ -50,6 +52,13 @@
         if (!correct) { dt.wrong++; lt.wrong++; }
       }
       if (srs && key) data.srs[key] = review(data.srs[key], correct, t);
+      scheduleSave();
+      emit();
+    },
+
+    // Modificar el estado (historias, grabaciones) y programar el guardado.
+    mutate(fn) {
+      fn(data);
       scheduleSave();
       emit();
     },

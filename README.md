@@ -20,7 +20,7 @@ como BCG, logística y comercio exterior).
 | 1 | Esqueleto, navegación, Dashboard, **Error Killer** | ✅ Lista |
 | 2 | Tiempos verbales, Registro (call center → oficina), Colocaciones | ✅ Lista |
 | 3 | Vocabulario con repetición espaciada, Progreso | ✅ Lista |
-| 4 | Constructor STAR, Simulador de entrevista | Pendiente |
+| 4 | Constructor STAR, Simulador de entrevista | ✅ Lista |
 | 5 | Husos horarios, empaquetado del `.app` | Pendiente |
 
 ## Cómo correr la app
@@ -68,7 +68,8 @@ codesign --force --deep --sign - "/Applications/English Coach.app"
 
 ## Dónde se guarda mi progreso
 
-En `~/Library/Application Support/English Coach/progress.json`. Para hacer un respaldo, copiá ese
+En `~/Library/Application Support/English Coach/progress.json` (progreso, historias STAR y la lista
+de grabaciones). Los audios del simulador están en la subcarpeta `recordings/` (archivos `.webm`). Para hacer un respaldo, copiá ese
 archivo; para empezar de cero, borralo (con la app cerrada).
 
 ## Cómo agregar ejercicios nuevos
@@ -210,6 +211,29 @@ En la pantalla de Vocabulario podés elegir la dirección: **inglés → españo
 **español → inglés** (producir, más difícil y más útil para hablar). Al ver la respuesta te
 autoevaluás: `1` = no lo sabía, `2` = lo sabía. Espacio muestra la respuesta.
 
+### `content/interview.json` — Simulador de entrevista
+
+Tres categorías (`about-me`, `behavioral`, `ea-situational`), cada una con su `checklist` de
+autoevaluación. Para agregar una pregunta:
+
+```json
+{
+  "id": "q-beh-07",
+  "category": "behavioral",
+  "text": "Tell me about a time you disagreed with your manager.",
+  "tip": "Qué buscan, en español. Aparece en «¿Qué buscan con esta pregunta?»."
+}
+```
+
+`timeLimitSec` cambia el cronómetro (90 por defecto) y `connectors` es la lista de conectores que
+aparece en la autoevaluación.
+
+### `content/star.json` — Constructor STAR
+
+Los textos de ayuda de cada caja, los verbos de logro sugeridos, la cantidad de historias objetivo
+(`targetStories`) y la historia de ejemplo. Las historias que escribís **no** van acá: se guardan
+en tu `progress.json`.
+
 ## Cómo funciona la repetición espaciada
 
 | Resultado | Vuelve a aparecer en |
@@ -234,6 +258,31 @@ fallaste ninguno, rota uno distinto cada semana).
 - **Errores que todavía fallo**: los temas de todos los módulos con fallos en los últimos 30 días,
   del más fallado al menos fallado, cada uno con su regla y un botón para practicarlo.
 
+## Constructor STAR
+
+Cuatro cajas (Situation, Task, Action, Result) con revisión en vivo:
+
+- **«we» en Action** → advertencia roja, y cada «we» queda resaltado.
+- **Result sin número** → te pide algo medible (%, tiempo, casos).
+- **Menos de 80 palabras** → «Desarrollá más».
+- **Errores de tu tabla** → subrayados en rojo dentro del texto (for…ago, interest, listen all,
+  partners, at the system, to + -ing, different + singular, Understood…). Los verbos en presente
+  dentro de la historia se marcan en naranja para que revises el tiempo verbal.
+
+Cada historia se guarda sola mientras escribís. Podés asociarla a una pregunta del simulador
+(aparece allí como ayuda) y usar **Modo repaso** para releerlas todas antes de una entrevista.
+
+## Simulador de entrevista
+
+**Pregunta al azar** (sale primero la que menos practicaste), cronómetro de 90 segundos y botón
+**Grabar** (o `espacio`). Al empezar a grabar, el tip y tu historia STAR se pliegan para que
+respondas de memoria. A los 90 segundos se corta solo. Después escuchás la grabación, marcás la
+autoevaluación (`1`–`4`) y guardás (`↵`).
+
+La primera vez, macOS pide permiso para usar el micrófono. Si lo negaste por error: *Ajustes del
+Sistema → Privacidad y seguridad → Micrófono* → activá English Coach. Sin micrófono podés usar
+**Solo cronómetro**.
+
 ## Estructura del proyecto
 
 ```
@@ -244,6 +293,7 @@ renderer/
   app.js                Navegación y registro de módulos
   lib/core.js           Lógica pura: fechas, repetición espaciada, racha (con tests)
   lib/drill.js          Motor de ejercicios compartido (sesión, feedback, resumen)
+  lib/star-check.js     Validador de historias STAR (con tests)
   lib/store.js          Progreso del usuario
   lib/ui.js             Ayudantes de interfaz e íconos
   modules/              Un archivo por módulo

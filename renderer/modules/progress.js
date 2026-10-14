@@ -153,7 +153,7 @@
       drawChart();
 
       const moduleRows = App.MODULES
-        .filter((m) => App.isReady(m.id) && App.impl(m.id).progress)
+        .filter((m) => App.isReady(m.id) && App.impl(m.id).progress && App.impl(m.id).tracksAnswers !== false)
         .map((m) => {
           const st = byModule[m.id] || { total: 0, correct: 0 };
           return h('div', { class: 'acc-row' },
