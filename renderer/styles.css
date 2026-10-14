@@ -564,3 +564,27 @@ mark { color: transparent; border-radius: 3px; }
 .rec-row { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; }
 .rec-main { flex: 1; min-width: 0; }
 .rec-audio:not(:empty) { margin-top: 8px; }
+
+/* ---------- Fase 5: husos horarios ---------- */
+.tz-row { display: grid; grid-template-columns: 190px 150px 70px 1fr; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.tz-row:last-child { border-bottom: 0; }
+.tz-row.tz-change { grid-template-columns: 260px 1fr 1fr; }
+.tz-diff { font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
+.tz-note { font-size: 12px; }
+.scenario { font-size: 18px; line-height: 1.5; margin-bottom: 12px; user-select: text; }
+.scenario-facts { display: grid; gap: 3px; font-size: 13.5px; margin-bottom: 18px; padding: 10px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.time-label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+.time-input { width: 130px; font-size: 20px; font-weight: 600; text-align: center; font-variant-numeric: tabular-nums; }
+.time-input.good { border-color: var(--good); color: var(--good); }
+.time-input.bad { border-color: var(--bad); color: var(--bad); }
+.tz-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 4px; background: var(--bg); border-radius: var(--radius-sm); overflow: hidden; }
+.tz-table th, .tz-table td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+.tz-table th { font-size: 11.5px; color: var(--text-2); font-weight: 600; }
+.tz-table tr:last-child td { border-bottom: 0; }
+.tz-table .bad-row td { background: var(--bad-soft); }
+.ok-mark { color: var(--good); display: inline-flex; }
+.bad-mark { color: var(--bad); display: inline-flex; align-items: center; font-size: 12px; white-space: nowrap; }
+.tz-why { margin: 4px 0 0; padding-left: 18px; font-size: 13px; color: var(--text-2); }
+.tz-why li { margin-bottom: 4px; }
+.email-line { font-size: 15px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; user-select: text; }
+.calc { font-size: 17px; font-variant-numeric: tabular-nums; }

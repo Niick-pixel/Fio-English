@@ -127,6 +127,22 @@ function validate(dir = DIR) {
     if (st) for (const k of ['s', 't', 'a', 'r']) if (!st.sections || !st.sections[k]) warn('star.json', `falta la sección "${k}"`);
   }
 
+  // timezones.json
+  const tz = readJSON('timezones.json');
+  if (tz) {
+    const regions = new Set((tz.regions || []).map((r) => r.id));
+    const seen = new Set();
+    for (const c of tz.cities || []) {
+      checkId('timezones.json', c.id, seen, 'ciudad');
+      if (!regions.has(c.region)) warn('timezones.json', `${c.id}: la región "${c.region}" no existe`);
+      if (!['none', 'eu', 'us'].includes(c.rule)) warn('timezones.json', `${c.id}: "rule" debe ser "none", "eu" o "us"`);
+      if (typeof c.utcOffset !== 'number') warn('timezones.json', `${c.id}: "utcOffset" debe ser un número (ej.: -5 o 5.5)`);
+      if (!Array.isArray(c.abbr) || c.abbr.length !== 2) warn('timezones.json', `${c.id}: "abbr" debe tener dos abreviaturas [invierno, verano]`);
+    }
+    if (!seen.has(tz.home)) warn('timezones.json', `"home" (${tz.home}) no es una ciudad de la lista`);
+    summary.push(`timezones.json: ${seen.size} ciudades`);
+  }
+
   return { problems, summary };
 }
 

@@ -25,7 +25,7 @@
     MODULES,
 
     register(id, impl) { impls[id] = impl; },
-    isReady(id) { return !!impls[id] && !impls[id].placeholder; },
+    isReady(id) { return !!impls[id]; },
     impl(id) { return impls[id]; },
     meta(id) { return MODULES.find((m) => m.id === id); },
 
@@ -47,8 +47,9 @@
       const view = document.getElementById('view');
       view.replaceChildren();
       view.scrollTop = 0;
-      const impl = impls[id] && !impls[id].placeholder ? impls[id] : impls['coming-soon'];
       try {
+        const impl = impls[id];
+        if (!impl) throw new Error(`El módulo «${id}» no está disponible.`);
         cleanup = await impl.render(view, { ...params, moduleId: id });
       } catch (err) {
         console.error(err);

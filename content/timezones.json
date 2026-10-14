@@ -1,0 +1,43 @@
+{
+  "_info": "Entrenador de husos horarios. 'utcOffset' = horas respecto de UTC en horario estándar (invierno). 'rule' = cómo cambia la hora: 'none' (nunca), 'eu' (Europa), 'us' (EE. UU.). 'abbr' = [abreviatura estándar, abreviatura de verano]. 'iana' solo se usa en los tests para verificar el motor.",
+  "home": "san-jose",
+  "workday": { "start": "09:00", "end": "18:00" },
+  "rules": {
+    "none": "No cambia la hora en todo el año.",
+    "eu": "Horario de verano desde el último domingo de marzo hasta el último domingo de octubre.",
+    "us": "Horario de verano desde el segundo domingo de marzo hasta el primer domingo de noviembre."
+  },
+  "regions": [
+    { "id": "cr", "title": "Costa Rica", "note": "UTC−6 todo el año, sin horario de verano." },
+    { "id": "us-east", "title": "EE. UU. Este", "note": "+2 h en verano (EDT), +1 h en invierno (EST)." },
+    { "id": "us-central", "title": "EE. UU. Centro", "note": "+1 h en verano (CDT), igual que Costa Rica en invierno (CST)." },
+    { "id": "us-west", "title": "EE. UU. Oeste", "note": "−1 h en verano (PDT), −2 h en invierno (PST)." },
+    { "id": "uk", "title": "Reino Unido", "note": "+7 h en verano (BST), +6 h en invierno (GMT)." },
+    { "id": "eu-central", "title": "Europa central", "note": "+8 h en verano (CEST), +7 h en invierno (CET)." },
+    { "id": "asia", "title": "Asia", "note": "Sin horario de verano. La diferencia con Costa Rica cambia la fecha: allá ya es el día siguiente." }
+  ],
+  "cities": [
+    { "id": "san-jose", "name": "San José", "country": "Costa Rica", "region": "cr", "utcOffset": -6, "rule": "none", "abbr": ["CST", "CST"], "iana": "America/Costa_Rica" },
+    { "id": "new-york", "name": "Nueva York", "country": "EE. UU.", "region": "us-east", "utcOffset": -5, "rule": "us", "abbr": ["EST", "EDT"], "iana": "America/New_York" },
+    { "id": "miami", "name": "Miami", "country": "EE. UU.", "region": "us-east", "utcOffset": -5, "rule": "us", "abbr": ["EST", "EDT"], "iana": "America/New_York" },
+    { "id": "boston", "name": "Boston", "country": "EE. UU.", "region": "us-east", "utcOffset": -5, "rule": "us", "abbr": ["EST", "EDT"], "iana": "America/New_York" },
+    { "id": "chicago", "name": "Chicago", "country": "EE. UU.", "region": "us-central", "utcOffset": -6, "rule": "us", "abbr": ["CST", "CDT"], "iana": "America/Chicago" },
+    { "id": "los-angeles", "name": "Los Ángeles", "country": "EE. UU.", "region": "us-west", "utcOffset": -8, "rule": "us", "abbr": ["PST", "PDT"], "iana": "America/Los_Angeles" },
+    { "id": "san-francisco", "name": "San Francisco", "country": "EE. UU.", "region": "us-west", "utcOffset": -8, "rule": "us", "abbr": ["PST", "PDT"], "iana": "America/Los_Angeles" },
+    { "id": "london", "name": "Londres", "country": "Reino Unido", "region": "uk", "utcOffset": 0, "rule": "eu", "abbr": ["GMT", "BST"], "iana": "Europe/London" },
+    { "id": "madrid", "name": "Madrid", "country": "España", "region": "eu-central", "utcOffset": 1, "rule": "eu", "abbr": ["CET", "CEST"], "iana": "Europe/Madrid" },
+    { "id": "paris", "name": "París", "country": "Francia", "region": "eu-central", "utcOffset": 1, "rule": "eu", "abbr": ["CET", "CEST"], "iana": "Europe/Paris" },
+    { "id": "frankfurt", "name": "Fráncfort", "country": "Alemania", "region": "eu-central", "utcOffset": 1, "rule": "eu", "abbr": ["CET", "CEST"], "iana": "Europe/Berlin" },
+    { "id": "munich", "name": "Múnich", "country": "Alemania", "region": "eu-central", "utcOffset": 1, "rule": "eu", "abbr": ["CET", "CEST"], "iana": "Europe/Berlin" },
+    { "id": "tokyo", "name": "Tokio", "country": "Japón", "region": "asia", "utcOffset": 9, "rule": "none", "abbr": ["JST", "JST"], "iana": "Asia/Tokyo" },
+    { "id": "shanghai", "name": "Shanghái", "country": "China", "region": "asia", "utcOffset": 8, "rule": "none", "abbr": ["CST", "CST"], "iana": "Asia/Shanghai" },
+    { "id": "singapore", "name": "Singapur", "country": "Singapur", "region": "asia", "utcOffset": 8, "rule": "none", "abbr": ["SGT", "SGT"], "iana": "Asia/Singapore" },
+    { "id": "seoul", "name": "Seúl", "country": "Corea del Sur", "region": "asia", "utcOffset": 9, "rule": "none", "abbr": ["KST", "KST"], "iana": "Asia/Seoul" },
+    { "id": "mumbai", "name": "Bombay", "country": "India", "region": "asia", "utcOffset": 5.5, "rule": "none", "abbr": ["IST", "IST"], "iana": "Asia/Kolkata" },
+    { "id": "dubai", "name": "Dubái", "country": "Emiratos Árabes", "region": "asia", "utcOffset": 4, "rule": "none", "abbr": ["GST", "GST"], "iana": "Asia/Dubai" }
+  ],
+  "roles": {
+    "singular": ["Tu jefa", "Tu jefe", "La directora regional", "El socio a cargo del proyecto", "La CFO", "Un cliente", "El proveedor", "La gerente de compras", "El equipo de finanzas"],
+    "plural": ["Dos colegas", "Tres consultores", "Los proveedores", "Dos clientes"]
+  }
+}

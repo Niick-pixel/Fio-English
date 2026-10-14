@@ -13,6 +13,21 @@ como BCG, logística y comercio exterior).
 
 ![Error Killer: al fallar se muestra la regla](docs/screenshots/fase1-error-killer-regla.png)
 
+## Los 10 módulos
+
+| Módulo | Para qué |
+|---|---|
+| **Inicio** | Racha, ejercicios de hoy, repasos pendientes, error de la semana y progreso por módulo |
+| **Error Killer** | Tus 10 errores documentados + «we → I», 171 ejercicios con repetición espaciada |
+| **Tiempos verbales** | for/ago/since, Past Simple vs Present Perfect, will vs going to, would |
+| **Registro** | 44 frases de call center → versión corporativa |
+| **Colocaciones** | 68 combinaciones make/do/take/pay/gain y otras, con la trampa del español |
+| **Vocabulario** | 40 flashcards en 3 mazos (agenda, verbos de logro, small talk) |
+| **Constructor STAR** | Historias de entrevista con revisión automática |
+| **Simulador** | 19 preguntas, cronómetro de 90 s, grabación y autoevaluación |
+| **Husos horarios** | Proponer reuniones entre ciudades y convertir horas |
+| **Progreso** | Gráfico por día, acierto por módulo y errores que todavía fallás |
+
 ## Estado por fases
 
 | Fase | Contenido | Estado |
@@ -21,7 +36,7 @@ como BCG, logística y comercio exterior).
 | 2 | Tiempos verbales, Registro (call center → oficina), Colocaciones | ✅ Lista |
 | 3 | Vocabulario con repetición espaciada, Progreso | ✅ Lista |
 | 4 | Constructor STAR, Simulador de entrevista | ✅ Lista |
-| 5 | Husos horarios, empaquetado del `.app` | Pendiente |
+| 5 | Husos horarios, empaquetado del `.app` | ✅ Lista |
 
 ## Cómo correr la app
 
@@ -44,9 +59,13 @@ Se abre la ventana de **English Coach**. Atajos útiles:
 ## Cómo generar el `.app` de macOS
 
 ```bash
-npm run dist       # crea dist/English Coach-<versión>-arm64.dmg y .zip (Apple Silicon)
+npm install        # solo la primera vez
+npm run dist       # crea dist/English Coach-1.0.0-arm64.dmg y el .zip (Apple Silicon)
 npm run dist:dir   # solo la carpeta con el .app, sin instalador (más rápido)
 ```
+
+El ícono sale de `build/icon.png` (1024×1024); electron-builder lo convierte solo a `.icns`. Si
+querés regenerarlo: `npm run icon` (necesita Python con Pillow).
 
 Hay que correrlo **en una Mac** (desde Linux o Windows el paquete sale roto: no se puede firmar y
 el `.zip` pierde los enlaces internos del framework). El resultado queda en `dist/`; para instalar,
@@ -57,6 +76,13 @@ Durante el build vas a ver `firma ad-hoc aplicada`: es una firma local gratuita
 Como no es un certificado de Apple, la primera vez macOS la bloquea igual: hacé **clic derecho →
 Abrir → Abrir** (o en *Ajustes del Sistema → Privacidad y seguridad → Abrir igualmente*). Solo hace
 falta una vez.
+
+**Primera vez en tu Mac, checklist rápido:**
+
+1. `npm run dist` termina mostrando `firma ad-hoc aplicada`.
+2. Abrí `dist/English Coach-1.0.0-arm64.dmg` y arrastrá la app a *Aplicaciones*.
+3. Clic derecho sobre la app → *Abrir* → *Abrir*.
+4. En el Simulador, el primer «Grabar» pide permiso de micrófono: aceptá.
 
 Si aun así macOS dice que la app "está dañada" (pasa a veces con apps descargadas o copiadas por
 AirDrop), quitale la marca de cuarentena y volvé a firmarla:
@@ -234,6 +260,20 @@ Los textos de ayuda de cada caja, los verbos de logro sugeridos, la cantidad de 
 (`targetStories`) y la historia de ejemplo. Las historias que escribís **no** van acá: se guardan
 en tu `progress.json`.
 
+### `content/timezones.json` — Husos horarios
+
+Ciudades, regiones y roles para los escenarios. Para agregar una ciudad que use una regla
+existente:
+
+```json
+{ "id": "toronto", "name": "Toronto", "country": "Canadá", "region": "us-east", "utcOffset": -5, "rule": "us", "abbr": ["EST", "EDT"] }
+```
+
+- `utcOffset`: horas respecto de UTC en **invierno** (pueden ser medias horas: `5.5`).
+- `rule`: `"none"` (nunca cambia), `"eu"` (Europa) o `"us"` (EE. UU./Canadá).
+- `abbr`: `[abreviatura de invierno, abreviatura de verano]`.
+- `roles`: las personas de los escenarios (`singular` usa «está», `plural` usa «están»).
+
 ## Cómo funciona la repetición espaciada
 
 | Resultado | Vuelve a aparecer en |
@@ -283,10 +323,27 @@ La primera vez, macOS pide permiso para usar el micrófono. Si lo negaste por er
 Sistema → Privacidad y seguridad → Micrófono* → activá English Coach. Sin micrófono podés usar
 **Solo cronómetro**.
 
+## Husos horarios
+
+Dos modos:
+
+- **Proponer una reunión:** «Tu jefa está en Madrid, dos colegas en Nueva York y vos en San José…».
+  Escribís una hora de Costa Rica; la app revisa que caiga entre 9:00 y 18:00 (hora local) de
+  lunes a viernes para todos, y te muestra la tabla de conversión completa, la ventana válida, el
+  porqué de cada diferencia y cómo proponerlo en un email en inglés.
+- **Convertir una hora:** una hora de Costa Rica → la hora y el día en otra ciudad (Asia cambia la
+  fecha).
+
+Reglas del motor (`renderer/lib/tz.js`): Costa Rica UTC−6 todo el año; Europa en verano desde el
+último domingo de marzo hasta el último de octubre; EE. UU. desde el segundo domingo de marzo
+hasta el primero de noviembre; Asia sin cambios. El 40 % de los escenarios cae a propósito en las
+semanas en que Europa ya cambió y EE. UU. todavía no. Los tests comparan el motor con la base de
+datos oficial de husos horarios, cada 3 horas, de 2025 a 2028.
+
 ## Estructura del proyecto
 
 ```
-main.js                 Proceso principal: ventana, lectura/escritura de JSON
+main.js                 Proceso principal: ventana, JSON, grabaciones, permiso de micrófono
 preload.js              Puente seguro entre la interfaz y el sistema de archivos
 renderer/
   index.html, styles.css
@@ -294,11 +351,13 @@ renderer/
   lib/core.js           Lógica pura: fechas, repetición espaciada, racha (con tests)
   lib/drill.js          Motor de ejercicios compartido (sesión, feedback, resumen)
   lib/star-check.js     Validador de historias STAR (con tests)
+  lib/tz.js             Motor de husos horarios (con tests)
   lib/store.js          Progreso del usuario
   lib/ui.js             Ayudantes de interfaz e íconos
   modules/              Un archivo por módulo
 content/                Ejercicios (JSON editables)
-scripts/                Validador de contenido
+build/icon.png          Ícono de la app
+scripts/                Validador de contenido, firma ad-hoc, generador del ícono
 tests/                  Tests (npm test)
 ```
 
